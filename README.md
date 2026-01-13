@@ -30,10 +30,10 @@ While you have almost complete creative freedom on your software product, there 
 > - Moderate services.
 > - Moderate reviews.
 > - View usage statistics.
-> ### Saves data persistently   
+> ## Saves data persistently   
 > Persistent data is data that outlives the process that created it. This means data needs to be stored so that it is not volatile and can be accessed at a later time even after restarting everything, or accessing the service from a different client. Your project will be powered by a RESTful API written in Java with a PostgreSQL database.
        
-> ### Has a user interface
+> ## Has a user interface
 > We will use web pages made with HTML and CSS.   
 # Good Luck!
 You are REQUIRED to use GitHub for project management. Group participation will be measured against GitHub commits and grades assigned accordingly.
