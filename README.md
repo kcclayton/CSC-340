@@ -16,20 +16,20 @@ While you have almost complete creative freedom on your software product, there 
 > ## Caters to different types of users       
 > Your service needs to solve problems for a diverse user class within that demographic. Each member of your group will be responsible for developing subsystems/services for a specific type of user.  (1. the customer, 2. the service provider). Each type of user will have specific services available to them.
 > ### 1. Customer:
-> Create/modify customer profile.
-> View available services.
-> Subscribe to available services.
-> Write reviews for subscribed services.
+> - Create/modify customer profile.
+> - View available services.
+> - Subscribe to available services.
+> - Write reviews for subscribed services.
 > ### 2. Provider:
-> Create/modify/remove provider profile.
-> Create services.
-> View customer statistics.
-> Reply to reviews.
+> - Create/modify/remove provider profile.
+> - Create services.
+> - View customer statistics.
+> - Reply to reviews.
 > ### 3. SysAdmin (if your team has 3 people):
-> Manage user access.
-> Moderate services.
-> Moderate reviews.
-> View usage statistics.
+> - Manage user access.
+> - Moderate services.
+> - Moderate reviews.
+> - View usage statistics.
 > ### Saves data persistently   
 > Persistent data is data that outlives the process that created it. This means data needs to be stored so that it is not volatile and can be accessed at a later time even after restarting everything, or accessing the service from a different client. Your project will be powered by a RESTful API written in Java with a PostgreSQL database.
        
