@@ -1,4 +1,6 @@
 Katie Williams
+KC Clayton
+
 ### Per Prof. Ntini:
 
 A huge share of your grade will come from the [class project](https://uncg.instructure.com/courses/147396/pages/csc340-project-2?module_item_id=4340252)!
