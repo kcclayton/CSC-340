@@ -1,9 +1,8 @@
-## CSC-340 Term Project
-> Nextdorm
+## Nextdorm
+> CSC-340 Term Project
 
 ## Team Members
-> Katie Williams \
-
+> Katie Williams
 > KC Clayton
 
 ## Description 
@@ -12,18 +11,22 @@
 >
 
 ## App Functions (Note: work in progress!)
-1. Customer (the user with the customer role):
-    1. Create/modify customer profile - <how will your app do this?>
-    2. View available services - <how will your app do this?>.
-    3. Subscribe to available services - <how will your app do this?>.
-    4. Write reviews for subscribed services - <how will your app do this?>.
-2. Provider (the user with the provider role):
-    1. Create/modify/remove provider profile - .
-    2. Create services - .
-    3. View customer statistics -  .
-    4. Reply to reviews - .
+1. Customer (mainly residents):
+    1. Create/modify profile
+    2. View posts on main feed
+    3. Sort posts by tags
+    4. Like and comment on posts
+    5. Subscribe to relevant communities
+    6. Recieve notifications for posts from subscribed pages
+    7. View profiles of other users
+2. Provider (mainly residents and RAs):
+    1. Create announcements + posts that notify recipients
+    2. Tag posts for relevant communities
+    3. Respond to comments on posts
+    4. Verify information and report innacuracies to SysAdmin
+    5. Send direct messages to users
+    6. Create pins on campus map (connected to posts)
 3. SysAdmin (the user with the admin role if applicable):
-    1. Manage user access - .
-    2. Moderate services - .
-    3. Moderate reviews - .
-    4. View usage statistics - .
+    1. Freeze select accounts from positing for an amount of time
+    2. Delete inaccurate information or inapppropriate content
+    3. View usage statistics
