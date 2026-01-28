@@ -1,5 +1,6 @@
-## Nextdorm
-> CSC-340 Term Project
+# Nextdorm
+## Title
+> Nextdorm: CSC-340 Term Project
 
 ## Team Members
 > Katie Williams
