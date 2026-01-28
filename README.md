@@ -3,6 +3,7 @@
 
 ## Team Members
 > Katie Williams
+
 > KC Clayton
 
 ## Description 
@@ -26,7 +27,7 @@
     4. Verify information and report innacuracies to SysAdmin
     5. Send direct messages to users
     6. Create pins on campus map (connected to posts)
-3. SysAdmin (the user with the admin role if applicable):
+3. SysAdmin (RA supervisors, etc.):
     1. Freeze select accounts from positing for an amount of time
     2. Delete inaccurate information or inapppropriate content
     3. View usage statistics
