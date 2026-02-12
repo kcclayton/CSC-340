@@ -2,7 +2,7 @@
 # Requirements – Starter Template
 
 **Project Name:** NextDorm \
-**Team:** Katie Williams | Team Role, and KC Clayton | Team Role \
+**Team:** Katie Williams | Lead Developer - Customer Section, and KC Clayton | Lead Developer - Provider Section \
 **Course:** CSC 340\
 **Version:** 1.0\
 **Date:** 2026-01-30
@@ -42,8 +42,41 @@ Our software puts resident communication all in one place, and connects students
 Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`.** Each story includes at least one **Given/When/Then** scenario.
 
 ### 2.1 Customer Stories
-- **US‑CUST‑001 — <short title>**  
+- **US‑CUST‑001 — <Create User Profile>**  
   _Story:_ As a student, I want to create a profile so that I can interact with other users.
+  _Acceptance:_
+  > Must be a student at an accepted university
+  ```
+  Scenario: Creating a user profile
+    Given I want to create a profile
+    When  I click the create profile button
+    Then  I can choose a username and password for my account, and enter information about myself for others to see
+  ```
+
+- **US‑CUST‑002 — <Login as Student>**
+  _Story:_ As a student, I want to log in so that I can come back to what I was doing before.
+  _Acceptance:_
+  > Username must be at least 6 characters long
+  > Password must be at least 12 characters long, and contain at least 1 captial letter and 1 symbol
+  ```
+  Scenario: Logging in
+    Given I want to log in to my account
+    When  I go to the login screen
+    Then  I want to enter my username and password and 
+  ```
+
+  - **US‑CUST‑003 — <Create Post>**  
+  _Story:_ As a student, I want to create posts so that I can share information with my community.
+  _Acceptance:_
+  ```
+  Scenario: Create a post
+    Given I want to create a post
+    When  I go to the create post page
+    Then  I can write a title, text, add pictures, and send it out for other users to see
+  ```
+
+  - **US‑CUST‑004 — <Comment on Post>**  
+  _Story:_ As a student, I want to respond to people's posts so that I can give them feedback on what they shared.
   _Acceptance:_
   ```gherkin
   Scenario: <happy path>
@@ -52,8 +85,8 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Then  <observable outcome>
   ```
 
-- **US‑CUST‑002 — <short title>**  
-  _Story:_ As a customer, I want … so that …  
+  - **US‑CUST‑005 — <Tag a Post>**  
+  _Story:_ As a student, I want to tag posts so that I can share information with who it's relevant to.
   _Acceptance:_
   ```gherkin
   Scenario: <happy path>
@@ -63,8 +96,8 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
   ```
 
 ### 2.2 Provider Stories
-- **US‑PROV‑001 — <short title>**  
-  _Story:_ As a provider, I want … so that …  
+- **US‑PROV‑001 — <Announce Globally>**  
+  _Story:_ As a provider, I want to make announcements to all my residents so that they all get the same information at the same time. 
   _Acceptance:_
   ```gherkin
   Scenario: <happy path>
@@ -73,29 +106,8 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Then  <observable outcome>
   ```
 
-- **US‑PROV‑002 — <short title>**  
-  _Story:_ As a provider, I want … so that …  
-  _Acceptance:_
-  ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
-  ```
-
-### 2.3 SysAdmin Stories
-- **US‑ADMIN‑001 — <short title>**  
-  _Story:_ As a sysadmin, I want … so that …  
-  _Acceptance:_
-  ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
-  ```
-
-- **US‑ADMIN‑002 — <short title>**  
-  _Story:_ As a sysadmin, I want … so that …  
+- **US‑PROV‑002 — <Block Users from Posting>**  
+  _Story:_ As a provider, I want to stop a specific person from making or commenting on posts so that I can hold people responsible for going against community guidelines. 
   _Acceptance:_
   ```gherkin
   Scenario: <happy path>
