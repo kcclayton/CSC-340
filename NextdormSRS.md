@@ -16,8 +16,7 @@
 Our software puts resident communication all in one place, and connects students with their RAs and other college resources. Never again wonder when the next fire drill is, who has your lost socks, or who to call when the sink won't stop running!
 
 **Glossary** Terms used in the project
-- **Term 1:** description.
-- **Term 2:** description
+- **RA:** Resident Advisor, an individual (usually a student) hired to supervise student residents on a college campus
 
 **Primary Users / Roles.**
 - **Student** — Students will be able to interact with other residents by making, commenting on, and following posts related to their desired topics, and directly message individuals or groups. 
@@ -103,20 +102,20 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
   _Story:_ As a provider, I want to make announcements to all my residents so that they all get the same information at the same time. 
   _Acceptance:_
   ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
+  Scenario: Make global announcements
+    Given I want to send all my residents the same announcement
+    When  I open the announcements tab
+    Then  I can write an announcement with a subject and body text that will be sent to all the residents I'm responsible for
   ```
 
 - **US‑PROV‑002 — <Block Users from Posting>**  
   _Story:_ As a provider, I want to stop a specific person from making or commenting on posts so that I can hold people responsible for going against community guidelines. 
   _Acceptance:_
   ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
+  Scenario: Freeze user abilities
+    Given I want to stop a user from posting for a certain amount of time
+    When  I click on a username
+    Then  I can open a menu, select to freeze their abilities, and specify for which reason and for how long
   ```
 
 ---
