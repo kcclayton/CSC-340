@@ -388,3 +388,37 @@ p {
 
 }
 
+.comment-btn {
+
+    margin-left: 50%;
+
+}
+
+.reply-btn {
+
+    margin-left: 78%;
+
+}
+
+.add-me-btn {
+
+    width: fit-content;
+    margin-left: 85%;
+    margin-bottom: 10px;
+
+}
+
+.event-info {
+
+    font-size: small;
+    text-align: left;
+    margin-left: 20px;
+
+}
+
+#post-btn {
+
+    width: fit-content;
+    margin-left: 80%;
+
+}
