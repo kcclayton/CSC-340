@@ -1,46 +1,41 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
 
-        <title>Prototype Test</title>
-        <link rel="icon" href="#" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- BOOTSTRAP -->
+    <title>Home Page</title>
+    <link rel="icon" href="images/nextdorm-logo-alt2.png" type="image/png">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"></script>
-        
-        <!-- FONTS -->
+    <!-- BOOTSTRAP -->
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Emilys+Candy&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Patrick+Hand+SC&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 
-        <!-- STYLE SHEET-->
+    <!-- FONTS -->
 
-        <link rel="stylesheet" href="style.css">
+    <!-- STYLE SHEET -->
 
-    </head>
-    <body>
+    <link rel="stylesheet" href="style.css">
 
-    <!-- NAVIGATION BAR -->
+</head>
 
-    <nav class="navbar navbar-expand-lg navbar-custom">
+<body>
+
+<!-- NAVBAR -->
+
+    <nav class="navbar navbar-expand-lg ra-navbar">
 
         <div class="container-fluid">
 
             <!-- HEADER LOGO -->
 
             <a class="navbar-brand" href="index.html">
-                <img src="logos/logo-long.png" alt="Logo" width="150" height="50"
+                <img src="images/nextdorm-logo-alt3.png" alt="Logo" width="155" height="55"
                     class="d-inline-block align-text-top">
             </a>
 
@@ -56,42 +51,22 @@
 
                 <!-- SEARCH BAR -->
 
-                <form class="d-flex" role="search">
+                <form class="d-flex navbar-search" role="search">
 
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                     <button class="btn btn-outline-custom" type="submit">Search</button>
 
                 </form>
-                
-                <!-- MAIN NAV BUTTONS -->
 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <a class="navbar-icon" id="user-ban-icon" href="user-ban-form.html">
+                        <img src="images/nextdorm-icon-user-ban-form.png" alt="Logo" width="60" height="60"
+                            class="d-inline-block align-text-top">
+                    </a>
 
-                    <!-- HOME BUTTON -->
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-
-                    <!-- DISCOVER BUTTON -->
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Discover</a>
-                    </li>
-
-                    <!-- NOTIFICATIONS BUTTON -->
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Notifications</a>
-                    </li>
-
-                    <!-- CREATE BUTTON -->
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Create</a>
-                    </li>
-
-                </ul>
+                    <a class="navbar-icon" id="profile-icon" href="profile-edit.html">
+                        <img src="images/nextdorm-icon-profile.png" alt="Logo" width="60" height="60"
+                            class="d-inline-block align-text-top">
+                    </a>
 
             </div>
 
@@ -99,72 +74,242 @@
 
     </nav>
 
+<!-- LEFT NAV OPTIONS -->
+
+    <div class="nav-column">
+
+        <!-- MAIN NAV BUTTONS -->
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            <!-- HOME BUTTON -->
+
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+            </li>
+
+            <!-- ANNOUNCEMENTS BUTTON -->
+
+            <li class="nav-item" style="font-weight: bold;">
+                <a class="nav-link" href="announcements.html">Announcements</a>
+            </li>
+
+            <!-- EVENTS BUTTON -->
+
+            <li class="nav-item">
+                <a class="nav-link" href="events.html">Events</a>
+            </li>
+
+    </div>
+
+<!-- MAIN CONTENT COLUMN -->
+
+    <div class="main-container">
+
         <!-- MAIN PAGE -->
-        <main>
-            
-            <div>
-                <h3>Announcements Page</h3>
 
-                <div class="card card-custom" style="width: 55rem; height: 50rem; float: right;">
+        <div class="main-wrapper">
 
-                    <a class="card-body link-underline link-underline-opacity-0" href="details.html">
+            <div class="thing">
 
-                        <h5 class="card-title">Announcements</h5>
-                        <p class="card-text"></p>
+            <!-- BUTTON CONTAINER -->
+
+                <ul class="container" id="filter-btn-container">
+
+                    <!-- ALL BUTTON -->
+
+                    <li class="feed-btn">
+                        <a class="nav-link" href="index.html">All</a>
+                    </li>
+
+                    <!-- ANNOUNCEMENTS BUTTON -->
+
+                    <li class="feed-btn">
+                        <a class="nav-link" href="#">Your Building</a>
+                    </li>
+
+                    <!-- EVENTS BUTTON -->
+
+                    <li class="feed-btn">
+                        <a class="nav-link" href="#">Important</a>
+                    </li>
+
+                    <li class="feed-btn" id="create-announcement">
+                        <a class="nav-link" href="create-announcement.html">Create an Announcement</a>
+                    </li>
+
+                </ul>
+
+            <!-- POST FEED -->
+
+                <div class="card home-feed mx-3">
+
+                <!-- EXAMPLE POST 1 -->
+
+                    <div class="card post mx-4 my-2">
+
+                        <ul class="container card-top-section">
+
+                            <li class="card-title post-title">Example Announcement</li>
+                            <li class="title-info">example.RA | 5 minutes ago</li>
+
+                        </ul>
+
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore repellat
+                            voluptatum temporibus officiis vitae expedita ea placeat dolore amet? Odio quae aperiam cum
+                            distinctio quasi at enim laudantium quam ducimus?</p>
                         <p class="card-text"><small></small></p>
 
-                    </a>
+                    </div>
+
+                <!-- EXAMPLE POST 2 -->
+
+                    <div class="card post mx-4 my-2">
+
+                        <ul class="container card-top-section">
+
+                            <li class="card-title post-title">Example Announcement</li>
+                            <li class="title-info">RA-example | 1 hour ago</li>
+
+                        </ul>
+
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, quam.
+                            Nihil consequuntur odit sapiente deserunt vel explicabo tempore accusantium illo unde minus
+                            id atque at, dolorem expedita autem non fuga!</p>
+                        <p class="card-text"><small></small></p>
+
+                    </div>
+
+                <!-- EXAMPLE POST 3 -->
+
+                    <div class="card post mx-4 my-2">
+
+                        <ul class="container card-top-section">
+
+                            <li class="card-title post-title">Example Announcement</li>
+                            <li class="title-info">some_RA | 3 hours ago</li>
+
+                        </ul>
+
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum asperiores
+                            explicabo ipsam, eligendi eaque in incidunt laborum est soluta, velit, ut eum exercitationem
+                            recusandae molestias quo. Quos quod illo vel!</p>
+                        <p class="card-text"><small></small></p>
+
+                    </div>
+
+                <!-- EXAMPLE POST 4 -->
+
+                    <div class="card post mx-4 my-2">
+
+                        <ul class="container card-top-section">
+
+                            <li class="card-title post-title">Example Announcement</li>
+                            <li class="title-info">RA123 | 3 hours ago</li>
+
+                        </ul>
+
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo laboriosam
+                            unde nesciunt veniam neque cupiditate id, quis quia tempore sapiente, dignissimos iure
+                            accusamus veritatis? Sequi quaerat reiciendis minus nulla itaque.</p>
+                        <p class="card-text"><small></small></p>
+
+                    </div>
+
+                <!-- EXAMPLE POST 5 -->
+
+                    <div class="card post mx-4 my-2">
+
+                        <ul class="container card-top-section">
+
+                            <li class="card-title post-title">Example Announcement</li>
+                            <li class="title-info">some_RA | 1 day ago</li>
+
+                        </ul>
+
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur cum
+                            tempore dolorum neque asperiores sit quisquam quis molestiae unde laborum a aspernatur
+                            reprehenderit, dolore ipsum non repellat quam beatae porro.</p>
+                        <p class="card-text"><small></small></p>
+
+                    </div>
+
+                <!-- EXAMPLE POST 6 -->
+
+                    <div class="card post mx-4 my-2">
+
+                        <ul class="container card-top-section">
+
+                            <li class="card-title post-title">Example Announcement</li>
+                            <li class="title-info">example.RA | 2 days ago</li>
+
+                        </ul>
+
+                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta modi omnis
+                            veritatis ea voluptate fuga voluptatibus, impedit error dignissimos dolor, vitae optio quia
+                            fugit tempore nesciunt aliquid facere laboriosam!</p>
+                        <p class="card-text"><small></small></p>
+
+                    </div>
 
                 </div>
-                <p>
-                    Lorem ipsum dolor sit amet 
-                    consectetur, adipisicing elit. 
-                    Dicta magnam minima minus velit 
-                    veritatis, officiis doloribus 
-                    blanditiis ipsum distinctio 
-                    delectus dolor consectetur 
-                    fugiat exercitationem sunt nihil 
-                    voluptates quis vero corrupti?
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet 
-                    consectetur, adipisicing elit. 
-                    Dicta magnam minima minus velit 
-                    veritatis, officiis doloribus 
-                    blanditiis ipsum distinctio 
-                    delectus dolor consectetur 
-                    fugiat exercitationem sunt nihil 
-                    voluptates quis vero corrupti?
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet 
-                    consectetur, adipisicing elit. 
-                    Dicta magnam minima minus velit 
-                    veritatis, officiis doloribus 
-                    blanditiis ipsum distinctio 
-                    delectus dolor consectetur 
-                    fugiat exercitationem sunt nihil 
-                    voluptates quis vero corrupti?
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet 
-                    consectetur, adipisicing elit.
-                    Dicta magnam minima minus velit 
-                    veritatis, officiis doloribus 
-                    blanditiis ipsum distinctio 
-                    delectus dolor consectetur 
-                    fugiat exercitationem sunt nihil 
-                    voluptates quis vero corrupti?
-                </p>
 
             </div>
-            <div>
+
+        </div>
+
+    </div>
+
+<!-- QUICK LINKS COLUMN -->
+
+    <div class="right-container">
+
+        <div class="quick-links-feed">
+
+        <!-- MAINTENANCE LINK -->
+
+            <div class="card quick-links">
+
+                <div class="card-body" id="fixt-card">
+                    
+                    <h5 class="card-title">Something broken?</h5>
+                    <p class="card-text">Use this form if you are experiencing issues with physical equipment or systems.</p>
+
+                </div>
+
+                <div class="card-body" id="fixt-link" style="border-top: rgb(215, 215, 215) solid 1px">
+                    
+                    <a href="https://uncg.webtma.com/Login/Validate/?tkn=g6Y25J6P4J0W32tK_JftRhAPjVpjq082kiulXBdor9j0S5lHhkW5q8SlpOO_rsnKUo8IJwwuTdmcR7nZA1DTeXx8IBqj6SvIjMmtD3GcdUHwU_BHSRq4RcfuSMDrsQoUgCt_tlvGkCjjmnuDabXrafABp0LGFY7fg9byqneZdGldqjDaUCKfE2eIyNGGYgX3EoYNXrm3D1C8YarQgyOACluyYuuw3SfZox-K5dHtaf3Dbe5sG4AAXB1RbiGA0MBSzBq9n73xRaWvHkQOvj83Dw" 
+                        class="card-link link-underline link-underline-opacity-0">Submit a work request here!</a>
                 
-            
+                </div>
+
             </div>
 
-        </main>
+        <!-- HRL LINK -->
 
-    </body>
+            <div class="card quick-links">
+
+                <div class="card-body" id="fixt-card">
+                    
+                    <h5 class="card-title">Community Guidelines</h5>
+                    <p class="card-text">See what all your campus has to offer.</p>
+
+                </div>
+
+                <div class="card-body" id="fixt-link" style="border-top: rgb(215, 215, 215) solid 1px">
+                    
+                    <a href="https://hrl.uncg.edu" 
+                        class="card-link link-underline link-underline-opacity-0">Visit the housing website here!</a>
+                
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
 
 </html>

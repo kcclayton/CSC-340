@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Landing Page</title>
+        <link rel="icon" href="images/nextdorm-logo-alt2.png" type="image/png">
+
+        <!-- BOOTSTRAP -->
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+            rel="stylesheet" 
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+            crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
+            crossorigin="anonymous"></script>
+
+        <!-- FONTS -->
+
+        <!-- STYLE SHEET -->
+
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+
+    <body>
+
+    <!-- NAVBAR -->
+
+        <nav class="navbar navbar-expand-lg login-navbar">
+            
+                <div class="container-fluid">
+                
+                    <a class="navbar-brand" href="#">
+            
+                        <img src="images/nextdorm-logo.png" alt="Logo" width="60" height="54" class="d-inline-block align-text-top">
+                
+                    </a>
+
+                    <a href="sign-up.html" class="btn custom-button">Create an account</a>
+
+                </div>
+
+        </nav>
+            
+    <!-- GREETING -->
+
+        <div class="login-greeting">
+                
+            <h1>Hey, <br>
+                Neighbor!</h1>
+
+        </div>
+
+    <!-- MAIN CARD -->
+
+        <div class="card-background">
+        
+            <div class="card-wrapper">
+            
+                <div class="card login-card">
+                
+                    <div class="container">
+                    
+                        <div class="mb-3">
+
+                        <!-- USERNAME INPUT -->
+                        
+                            <div class="mb-3">
+                        
+                                <label for="formGroupExampleInput" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput">
+                        
+                            </div>
+                        
+                        <!-- PASSWORD INPUT -->
+                        
+                            <div class="mb-3">
+                        
+                                <label for="formGroupExampleInput2" class="form-label">Password</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput2">
+                        
+                            </div>
+
+                        <!-- SUBMIT BUTTON -->
+                        
+                            <a href="post-feed.html" button type="button" class="btn" id="submit-btn">Submit</button></a>
+
+                        <p>OR</p>
+
+                        <!-- AS STUDENT BUTTON -->
+
+                            <div class="d-flex justify-content-center">
+
+                                <button type="button" class="btn" id="student-btn">Sign in as a Student</button> <!-- currently nonfunctional -->
+
+                            </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
