@@ -12,16 +12,58 @@
 </head>
 <body>
 
-    <!--Navbar-->
+<!-- NAVBAR -->
+
+    <nav class="navbar navbar-expand-lg ra-navbar">
+
+        <div class="container-fluid">
+
+            <!-- HEADER LOGO -->
+
+            <a class="navbar-brand" href="../Provider/index.html">
+                <img src="images/nextdorm-logo-alt3.png" alt="Logo" width="155" height="55"
+                    class="d-inline-block align-text-top">
+            </a>
+
+            <!-- COLLAPSE AT SIZE -->
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <!-- SEARCH BAR -->
+
+                <form class="d-flex navbar-search" role="search">
+
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-outline-custom" type="submit">Search</button>
+
+                </form>
+
+                    <a class="navbar-icon" id="profile-icon" href="profile.html">
+                        <img src="images/nextdorm-icon-profile.png" alt="Logo" width="60" height="60"
+                            class="d-inline-block align-text-top">
+                    </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
     
 
     <!--Card/Main Content-->
     <div class="card-wrapper">
         <div class="card border-0">
             <h1>Post Successful!</h1>
-            <img src="Images/nextdorm-logo-alt2.png" width="500" alt="Successful post image">
+            <img src="Images/nextdorm-logo-alt2.png" width="450" alt="Successful post image">
 
-            <a href="post-feed.html" class="btn custom-button">Back to home!</a>
+            <a href="../Provider/index.html" class="btn custom-button" id="home-button">Back to home!</a>
         </div>
     </div>
 

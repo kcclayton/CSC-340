@@ -9,13 +9,12 @@ h1 {
     color:#095998;
 }
 
-.custom-button{
-    background-color: #92d6ff;
-    width:300px;
-    padding:12px;
-    display: block;
-    margin: auto;
-    font-size: large;
+/* NAV BAR */
+.custom-button {
+    background-color:#a2d2ff;
+    border-radius: 25px;
+    padding: 12px;
+    width: 190px;
 }
 
 .custom-button:hover {
@@ -23,11 +22,81 @@ h1 {
 }
 
 
+.navbar {
+    background-color: #caf0f8;
+}
+
+.navbar-search {
+    text-align: center;
+}
+
+.nav-column {
+    background-color: white;
+    position: absolute;
+    width: 20%;
+    height: 100%;
+}
+
+.navbar-nav {
+    margin-left: 20%;
+    margin-top: 20px;
+}
+
+/* SEARCH BAR */
+
+.navbar-search {
+
+    width: 50%;
+    margin-left: 20%;
+
+}
+
+.btn-outline-custom {
+
+    background-color:#51b9f1;
+
+}
+
+.btn-outline-custom:hover {
+
+    background-color: #0077b6;
+
+}
+
+/* NAVBAR ICONS */
+
+#profile-icon {
+
+    margin-left: 25%;
+
+}
+
+/* CARD */
+.card {
+    padding-bottom: 20px;
+}
+
 .card-wrapper{
     display:flex;
     justify-content: center;
     align-items: center;
-    padding:30px;
-    margin: 20px;
+    padding: 15px;
+    margin: 0px;
 }
+
+
+
+#home-button{
+    background-color: #92d6ff;
+    width:200px;
+    padding:10px;
+    display: block;
+    margin: auto;
+    font-size: large;
+}
+
+#home-button:hover {
+    background-color:#0077b6;
+}
+
 
