@@ -98,9 +98,41 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
   ```
 
 ### 2.2 Provider Stories
-- **US‑PROV‑001 — <Announce Globally>**  
-  _Story:_ As a provider, I want to make announcements to all my residents so that they all get the same information at the same time. 
+- **US‑PROV‑001 — Create RA Profile**  
+  _Story:_ As an RA, I want to create a profile so that I can interact with my residents.\
   _Acceptance:_
+  > Must be an employee at an accepted university
+  ```gherkin
+  Scenario: Creating a user profile
+    Given I have not registered an account
+    When  I click the create profile button
+    Then  I can choose a username and password for my account, and enter information about myself for others to see
+  ```
+- **US‑PROV‑002 — Login as RA**  
+  _Story:_ As an RA, I want to log in so that I can come back to what I was doing before.\
+  _Acceptance:_
+  > Username must be at least 6 characters long.\
+  > Password must be at least 12 characters long, and contain at least 1 capital 
+  ```gherkin
+   Scenario: Logging in
+    Given I want to log in to my account
+    When  I go to the login screen
+    Then  I enter my username and password and am logged in to my account 
+  ```
+- **US‑PROV‑003 — Create Post**  
+  _Story:_ As an RA, I want to create posts so that I can share information with my community.\
+  _Acceptance:_
+  > Must be logged in as a user
+  ```gherkin
+  Scenario: Create a post
+    Given I want to create a post
+    When  I go to the create post page
+    Then  I can write a title, text, add pictures, and send it out for other users to see
+  ```
+- **US‑PROV‑004 — Announce Globally**  
+  _Story:_ As a provider, I want to make announcements to all my residents so that they all get the same information at the same time.\ 
+  _Acceptance:_
+  > Must be logged in as an RA
   ```gherkin
   Scenario: Make global announcements
     Given I want to send all my residents the same announcement
@@ -108,14 +140,27 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Then  I can write an announcement with a subject and body text that will be sent to all the residents I'm responsible for
   ```
 
-- **US‑PROV‑002 — <Block Users from Posting>**  
-  _Story:_ As a provider, I want to stop a specific person from making or commenting on posts so that I can hold people responsible for going against community guidelines. 
+- **US‑PROV‑005 — Block Users from Posting**  
+  _Story:_ As a provider, I want to stop a specific person from making or commenting on posts so that I can hold people responsible for going against community guidelines.\ 
   _Acceptance:_
+  > Must be logged in as an RA
   ```gherkin
   Scenario: Freeze user abilities
     Given I want to stop a user from posting for a certain amount of time
     When  I click on a username
     Then  I can open a menu, select to freeze their abilities, and specify for which reason and for how long
+  ```
+
+- **US‑PROV‑006 — Tag a Post**  
+  _Story:_ As an RA, I want to tag posts so that I can share information with who it's relevant to.\
+  _Acceptance:_
+  > Initiate the process of making a post
+  ```gherkin
+  Scenario: Tagging a post
+    Given I have made a post
+    When  I select a pre-made tag
+    Then  it is attached to my post
+      And users can find the post by the new tag
   ```
 
 ---
