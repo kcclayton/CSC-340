@@ -1,5 +1,5 @@
 package _Proj.NextDorm.RA;
-import _Proj.NextDorm.User.*;
+import _Proj.NextDorm.User.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
