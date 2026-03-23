@@ -1,5 +1,6 @@
 package _Proj.NextDorm.Student;
 import _Proj.NextDorm.User.*;
+import _Proj.NextDorm.Post.Post;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -35,6 +36,10 @@ public class Student extends User {
         SUSPENDED,
         BANNED
     }
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("student")
+    private List<Post> posts;
 
     
 }
