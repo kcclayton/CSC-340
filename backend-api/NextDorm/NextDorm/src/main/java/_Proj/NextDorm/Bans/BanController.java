@@ -1,0 +1,78 @@
+package _Proj.NextDorm.Bans;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/bans")
+public class BanController {
+
+    @Autowired
+    private BanService banService;
+
+    // GET all bans
+    // localhost:8080/bans
+    @GetMapping
+    public List<Ban> getAllBans() {
+        return banService.getAllBans();
+    }
+
+    // GET ban by ID
+    // localhost:8080/bans/1
+    @GetMapping("/{id}")
+    public Optional<Ban> getBanById(@PathVariable Long id) {
+        return banService.getBanById(id);
+    }
+
+    // GET all bans for a specific user
+    // localhost:8080/bans/user/1
+    @GetMapping("/user/{userId}")
+    public List<Ban> getBansByUser(@PathVariable Long userId) {
+        return banService.getBansByUser(userId);
+    }
+
+    // GET all currently active bans
+    // localhost:8080/bans/active
+    @GetMapping("/active")
+    public List<Ban> getActiveBans() {
+        return banService.getActiveBans();
+    }
+
+    // GET all bans issued by a specific RA
+    // localhost:8080/bans/ra/1
+    @GetMapping("/ra/{raId}")
+    public List<Ban> getBansByRa(@PathVariable Long raId) {
+        return banService.getBansByRa(raId);
+    }
+
+    // POST - issue a new ban
+    // localhost:8080/bans
+    @PostMapping
+    public Ban issueBan(@RequestBody Ban ban) {
+        return banService.issueBan(ban);
+    }
+
+    // PUT - update an existing ban
+    // localhost:8080/bans/1
+    @PutMapping("/{id}")
+    public Ban updateBan(@PathVariable Long id, @RequestBody Ban ban) {
+        return banService.updateBan(id, ban);
+    }
+
+    // PUT - lift a ban (deactivate without deleting)
+    // localhost:8080/bans/1/lift
+    @PutMapping("/{id}/lift")
+    public Ban liftBan(@PathVariable Long id) {
+        return banService.liftBan(id);
+    }
+
+    // DELETE - remove a ban record
+    // localhost:8080/bans/1
+    @DeleteMapping("/{id}")
+    public String deleteBan(@PathVariable Long id) {
+        banService.deleteBan(id);
+        return "Ban with ID " + id + " has been deleted.";
+    }
+}
