@@ -15,9 +15,9 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    
+   
     @PostMapping
-    public ResponseEntity<Student> createStudent(@RequestBody Student student) {
+    public ResponseEntity<Student> createStudent(@RequestBody Student student) {    
         Student createdStudent = studentService.createStudent(student);
         return new ResponseEntity<>(createdStudent, HttpStatus.CREATED);
     }
