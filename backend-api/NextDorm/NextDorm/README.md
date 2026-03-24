@@ -53,54 +53,39 @@ Core domains:
 
 ### RA Management
 
-#### Create RA
-**Endpoint:** `POST /ras`
-**Use Case:** US-PROV-001 (Create RA Profile)
-**Description:** Register a new RA account.
-
-```http
-POST /ras
-Content-Type: application/json
-
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/ras` | Get all RAs |
+| GET | `/ras/{id}` | Get an RA by ID |
+| GET | `/ras/residence/{residenceDescription}` | Get all RAs by residence description |
+| POST | `/ras` | Create a new RA |
+| PUT | `/ras/{id}` | Update an existing RA |
+| DELETE | `/ras/{id}` | Delete an RA |
+ 
+**Example POST /ras request body:**
+```json
 {
-	"residenceDescription": "North Hall - 2nd Floor",
-	"bans": null,
-	"event": null,
-	"email": "johnson@uncg.edu",
-	"name": "Alex Johnson",
-	"role": "RA",
-	"userId": 9,
-	"userPassword": "SecurePass123!",
-	"username": "ra_johnson"
+  "username": "ra_johnson",
+  "email": "johnson@uncg.edu",
+  "userPassword": "SecurePass123!",
+  "name": "Alex Johnson",
+  "residenceDescription": "North Hall - 2nd Floor"
 }
 ```
-
-**Status Code:** 201 Created
-
-#### Get All RAs
-**Endpoint:** `GET /ras`
-**Status Code:** 200 OK
-
-#### Get RA by ID
-**Endpoint:** `GET /ras/{id}`
-**Status Code:** 200 OK / 404 Not Found
-
-#### Get RA by Building
-**Endpoint:** `GET /ras/building/{building}`
-**Status Code:** 200 OK
-
-#### Get RA by Staff ID
-**Endpoint:** `GET /ras/staff/{staffId}`
-**Status Code:** 200 OK / 404 Not Found
-
-#### Update RA
-**Endpoint:** `PUT /ras/{id}`
-**Status Code:** 200 OK / 404 Not Found
-
-#### Delete RA
-**Endpoint:** `DELETE /ras/{id}`
-**Response:** "RA with ID {id} has been deleted."
-**Status Code:** 200 OK
+ 
+**Example response:**
+```json
+{
+  "userId": 1,
+  "username": "ra_johnson",
+  "email": "johnson@uncg.edu",
+  "name": "Alex Johnson",
+  "role": "RA",
+  "residenceDescription": "North Hall - 2nd Floor",
+  "bans": [],
+  "eventPosts": []
+}
+```
 
 ---
 
@@ -116,116 +101,82 @@ Content-Type: application/json
 
 ### Event Management
 
-#### Create Event
-**Endpoint:** `POST /events`
-**Use Case:** US-PROV-004
-**Description:** RA posts a global event/announcement.
-
-```http
-POST /events
-Content-Type: application/json
-
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/eventposts` | Get all event posts |
+| GET | `/eventposts/{id}` | Get an event post by ID |
+| GET | `/eventposts/ra/{raId}` | Get all event posts created by a specific RA |
+| GET | `/eventposts/search?description={description}` | Search event posts by description |
+| POST | `/eventposts` | Create a new event post |
+| PUT | `/eventposts/{id}` | Update an existing event post |
+| DELETE | `/eventposts/{id}` | Delete an event post |
+ 
+**Example POST /eventposts request body:**
+```json
 {
   "organizationName": "North Hall RAs",
   "eventDate": "2026-04-01",
   "location": "North Hall Front Lawn",
   "description": "Mandatory fire drill for all residents",
-  "ra": { "userId": 9 }
+  "ra": { "userId": 1 }
 }
 ```
-
-**Status Code:** 201 Created
-
-#### Get All Events
-**Endpoint:** `GET /events`
-**Status Code:** 200 OK
-
-#### Get Event by ID
-**Endpoint:** `GET /events/{id}`
-**Status Code:** 200 OK / 404 Not Found
-
-#### Get Events Created by Specific RA
-**Endpoint:** `GET /events/ra/{raId}`
-**Status Code:** 200 OK
-
-#### Get Events by Title Substring
-**Endpoint:** `GET /events/search?title={title}`
-**Status Code:** 200 OK
-
-#### Update Event by ID
-**Endpoint:** `PUT /events/{id}`
-**Status Code:** 200 OK 
-
-#### Delete Event by ID
-**Endpoint:** `DELETE /events/{id}`
-**Response:** "Event with ID {id} has been deleted."
-**Status Code:** 200 OK
+ 
+**Example response:**
+```json
+{
+  "eventPostId": 1,
+  "organizationName": "North Hall RAs",
+  "eventDate": "2026-04-01",
+  "location": "North Hall Front Lawn",
+  "description": "Mandatory fire drill for all residents",
+  "ra": { "userId": 1 }
+}
+```
 
 ---
 
 ### Ban Management
 
-#### Create Ban
-**Endpoint:** `POST /bans`
-**Use Case:** US-PROV-005
-**Description:** RA bans a user from posting/replying for a period.
-
-```http
-POST /bans
-Content-Type: application/json
-
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/bans` | Get all bans |
+| GET | `/bans/{id}` | Get a ban by ID |
+| GET | `/bans/student/{studentId}` | Get all bans for a specific student |
+| GET | `/bans/ra/{raId}` | Get all bans issued by a specific RA |
+| POST | `/bans` | Issue a new ban |
+| PUT | `/bans/{id}` | Update an existing ban |
+| DELETE | `/bans/{id}` | Delete a ban record |
+ 
+**Example POST /bans request body:**
+```json
 {
-  "studentId": 1,
-  "ra": { "userId": 9 },
+  "studentId": 2,
+  "ra": { "userId": 1 },
+  "description": "Violation of community guidelines",
+  "banLength": 30
+}
+```
+ 
+**Example response:**
+```json
+{
+  "banId": 1,
+  "studentId": 2,
+  "ra": { "userId": 1 },
   "description": "Violation of community guidelines",
   "banLength": 30
 }
 ```
 
-**Status Code:** 201 Created
-
-#### Get All Bans
-**Endpoint:** `GET /bans`
-**Status Code:** 200 OK
-
-#### Get Ban by ID
-**Endpoint:** `GET /bans/{id}`
-**Status Code:** 200 OK / 404 Not Found
-
-#### Get All Bans For a User
-**Endpoint:** `GET /bans/user/{userId}`
-**Status Code:** 200 OK
-
-#### Get Active Bans
-**Endpoint:** `GET /bans/active`
-**Status Code:** 200 OK
-
-#### Get Bans Issued by RA
-**Endpoint:** `GET /bans/ra/{raId}`
-**Status Code:** 200 OK 
-
-#### Update Ban by ID
-**Endpoint:** `PUT /bans/{id}`
-**Status Code:** 200 OK
-
-#### Lift / Deactivate Ban
-**Endpoint:** `PUT /bans/{id}/lift`
-**Status Code:** 200 OK
-
-#### Delete Ban by ID
-**Endpoint:** `DELETE /bans/{id}`
-**Response:** "Ban with ID {id} has been deleted."
-**Status Code:** 200 OK
-
 ---
 
 ## 5. Use Case Mapping
 
-| Use Case | Description | Related Endpoints |
-|----------|-------------|-------------------|
-| US-PROV-001 | Create RA profile | `POST /ras`, `PUT /ras/{id}` |
-| US-PROV-002 | Login as RA | `POST /ras/login` (assumed) |
-| US-PROV-003 | Create post as RA | `POST /posts` |
-| US-PROV-004 | Global announcements | `POST /events` |
-| US-PROV-005 | Block user | `POST /bans` |
-| US-PROV-006 | Tag a post as RA | `PUT /posts/{id}` (tags) |
+| Use Case | ID | Endpoint(s) |
+|----------|----|-------------|
+| Create RA Profile | US-PROV-001 | `POST /ras` |
+| Login as RA | US-PROV-002 | `GET /ras/{id}` |
+| Create Post / Announcement | US-PROV-003 | `POST /eventposts` |
+| Announce Globally | US-PROV-004 | `POST /eventposts`, `GET /eventposts` |
+| Block Users from Posting | US-PROV-005 | `POST /bans`, `DELETE /bans/{id}` |
