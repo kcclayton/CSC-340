@@ -94,7 +94,7 @@ Core domains:
 |--------|----------|-------------|
 | GET | `/ras` | Get all RAs |
 | GET | `/ras/{id}` | Get an RA by ID |
-| GET | `/ras/residence/{residenceDescription}` | Get all RAs by residence description |
+| GET | `/ras/residence/search` | Get all RAs by residence description |
 | POST | `/ras` | Create a new RA |
 | PUT | `/ras/{id}` | Update an existing RA |
 | DELETE | `/ras/{id}` | Delete an RA |
