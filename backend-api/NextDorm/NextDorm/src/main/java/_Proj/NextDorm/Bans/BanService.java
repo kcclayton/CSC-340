@@ -2,12 +2,10 @@ package _Proj.NextDorm.Bans;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class BanService {
 
     @Autowired
@@ -23,53 +21,30 @@ public class BanService {
         return banRepository.findById(id);
     }
 
-    // Get all bans for a specific user
-    public List<Ban> getBansByUser(Long userId) {
-        return banRepository.findByBannedUserId(userId);
-    }
-
-    // Get all currently active bans
-    public List<Ban> getActiveBans() {
-        return banRepository.findByActive(true);
+    // Get all bans for a specific student
+    public List<Ban> getBansByStudent(Long studentId) {
+        return banRepository.findByStudentId(studentId);
     }
 
     // Get all bans issued by a specific RA
     public List<Ban> getBansByRa(Long raId) {
-        return banRepository.findByIssuedByRaId(raId);
+        return banRepository.findByRa_UserId(raId);
     }
 
     // Issue a new ban
     public Ban issueBan(Ban ban) {
-        ban.setActive(true);
         return banRepository.save(ban);
     }
 
     // Update a ban
     public Ban updateBan(Long id, Ban updatedBan) {
-        return banRepository.findById(id).map(existingBan -> {
-            existingBan.setBannedUserId(updatedBan.getBannedUserId());
-            existingBan.setIssuedByRaId(updatedBan.getIssuedByRaId());
-            existingBan.setReason(updatedBan.getReason());
-            existingBan.setStartDate(updatedBan.getStartDate());
-            existingBan.setEndDate(updatedBan.getEndDate());
-            existingBan.setActive(updatedBan.isActive());
-            return banRepository.save(existingBan);
-        }).orElseThrow(() -> new RuntimeException("Ban not found"));
-    }
-
-    // Lift a ban (set active to false)
-    public Ban liftBan(Long id) {
-        Optional<Ban> optional = banRepository.findById(id);
-        if (optional.isPresent()) {
-            Ban ban = optional.get();
-            ban.setActive(false);
-            return banRepository.save(ban);
-        }
-        return null;
+        updatedBan.setBanId(id);
+        return banRepository.save(updatedBan);
     }
 
     // Delete a ban record
     public void deleteBan(Long id) {
         banRepository.deleteById(id);
     }
+    
 }

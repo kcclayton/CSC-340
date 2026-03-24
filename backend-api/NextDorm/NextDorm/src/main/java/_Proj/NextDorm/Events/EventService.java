@@ -2,55 +2,47 @@ package _Proj.NextDorm.Events;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class EventService {
 
     @Autowired
     private EventRepository eventRepository;
 
-    // Get all events
+    // Get all event posts
     public List<Event> getAllEvents() {
         return eventRepository.findAll();
     }
 
-    // Get an event by ID
+    // Get an event post by ID
     public Optional<Event> getEventById(Long id) {
         return eventRepository.findById(id);
     }
 
-    // Get all events created by a specific RA
+    // Get all event posts created by a specific RA
     public List<Event> getEventsByRa(Long raId) {
-        return eventRepository.findByCreatedByRaId(raId);
+        return eventRepository.findByRa_UserId(raId);
     }
 
-    // Search events by title
-    public List<Event> searchEventsByTitle(String title) {
-        return eventRepository.findByTitleContainingIgnoreCase(title);
+    // Search event posts by description
+    public List<Event> searchEventsByDescription(String description) {
+        return eventRepository.findByDescriptionContainingIgnoreCase(description);
     }
 
-    // Create a new event
+    // Create a new event post
     public Event createEvent(Event event) {
         return eventRepository.save(event);
     }
 
-    // Update an existing event
+    // Update an existing event post
     public Event updateEvent(Long id, Event updatedEvent) {
-        return eventRepository.findById(id).map(existingEvent -> {
-            existingEvent.setTitle(updatedEvent.getTitle());
-            existingEvent.setDescription(updatedEvent.getDescription());
-            existingEvent.setEventDate(updatedEvent.getEventDate());
-            existingEvent.setLocation(updatedEvent.getLocation());
-            existingEvent.setCreatedByRaId(updatedEvent.getCreatedByRaId());
-            return eventRepository.save(existingEvent);
-        }).orElseThrow(() -> new RuntimeException("Event not found"));
+        updatedEvent.setEventId(id);
+        return eventRepository.save(updatedEvent);
     }
 
-    // Delete an event
+    // Delete an event post
     public void deleteEvent(Long id) {
         eventRepository.deleteById(id);
     }

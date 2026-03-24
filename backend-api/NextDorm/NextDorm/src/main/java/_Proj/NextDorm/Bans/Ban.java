@@ -1,10 +1,10 @@
 package _Proj.NextDorm.Bans;
 
+import _Proj.NextDorm.RA.RA;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "bans")
@@ -17,27 +17,16 @@ public class Ban {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long banId;
 
-    // The ID of the user who is banned
     @Column(nullable = false)
-    private Long bannedUserId;
+    private Long studentId;
 
-    // The ID of the RA who issued the ban
-    @Column(nullable = false)
-    private Long issuedByRaId;
-
-    @Column(nullable = false)
-    private String reason;
+    @ManyToOne
+    @JoinColumn(name = "raId", nullable = false)
+    private RA ra;
 
     @Column(nullable = false)
-    private LocalDate startDate;
-
-    // Null means indefinite ban
-    private LocalDate endDate;
+    private String description;
 
     @Column(nullable = false)
-    private boolean active;
-
-    @Version
-    private Long version;
-
+    private int banLength;
 }

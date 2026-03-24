@@ -7,9 +7,9 @@ import java.util.List;
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
 
-    // Find all events created by a specific RA
-    List<Event> findByCreatedByRaId(Long raId);
+    // Find all event posts created by a specific RA
+    List<Event> findByRa_UserId(Long raId);
 
-    // Search events by title containing a substring
-    List<Event> findByTitleContainingIgnoreCase(String title);
+    // Search event posts by description containing a substring
+    List<Event> findByDescriptionContainingIgnoreCase(String description);
 }

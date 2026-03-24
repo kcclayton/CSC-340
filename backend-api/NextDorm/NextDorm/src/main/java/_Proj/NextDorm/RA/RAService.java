@@ -3,12 +3,10 @@ import _Proj.NextDorm.User.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class RAService {
 
     @Autowired
@@ -24,14 +22,9 @@ public class RAService {
         return raRepository.findById(id);
     }
 
-    // Get all RAs for a specific building
-    public List<RA> getRAsByBuilding(String building) {
-        return raRepository.findByBuilding(building);
-    }
-
-    // Get an RA by staff ID
-    public Optional<RA> getRAByStaffId(String staffId) {
-        return raRepository.findByStaffId(staffId);
+    // Get all RAs by residence description
+    public List<RA> getRAsByResidenceDescription(String residenceDescription) {
+        return raRepository.findByResidenceDescription(residenceDescription);
     }
 
     // Create a new RA
@@ -42,20 +35,13 @@ public class RAService {
 
     // Update an existing RA
     public RA updateRA(Long id, RA updatedRA) {
-        return raRepository.findById(id).map(existingRA -> {
-            existingRA.setBuilding(updatedRA.getBuilding());
-            existingRA.setFloorSection(updatedRA.getFloorSection());
-            existingRA.setStaffId(updatedRA.getStaffId());
-            existingRA.setName(updatedRA.getName());
-            existingRA.setEmail(updatedRA.getEmail());
-            existingRA.setUsername(updatedRA.getUsername());
-            existingRA.setUserPassword(updatedRA.getUserPassword());
-            return raRepository.save(existingRA);
-        }).orElseThrow(() -> new RuntimeException("RA not found"));
+        updatedRA.setUserId(id);
+        return raRepository.save(updatedRA);
     }
 
     // Delete an RA
     public void deleteRA(Long id) {
         raRepository.deleteById(id);
     }
+
 }
