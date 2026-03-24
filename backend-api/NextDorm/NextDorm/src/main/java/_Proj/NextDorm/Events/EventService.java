@@ -2,10 +2,12 @@ package _Proj.NextDorm.Events;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class EventService {
 
     @Autowired
@@ -38,8 +40,14 @@ public class EventService {
 
     // Update an existing event
     public Event updateEvent(Long id, Event updatedEvent) {
-        updatedEvent.setEventId(id);
-        return eventRepository.save(updatedEvent);
+        return eventRepository.findById(id).map(existingEvent -> {
+            existingEvent.setTitle(updatedEvent.getTitle());
+            existingEvent.setDescription(updatedEvent.getDescription());
+            existingEvent.setEventDate(updatedEvent.getEventDate());
+            existingEvent.setLocation(updatedEvent.getLocation());
+            existingEvent.setCreatedByRaId(updatedEvent.getCreatedByRaId());
+            return eventRepository.save(existingEvent);
+        }).orElseThrow(() -> new RuntimeException("Event not found"));
     }
 
     // Delete an event

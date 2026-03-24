@@ -32,4 +32,8 @@ public class Event {
     // The RA who created the event
     @Column(nullable = false)
     private Long createdByRaId;
+
+    @Version
+    private Long version;
+
 }
