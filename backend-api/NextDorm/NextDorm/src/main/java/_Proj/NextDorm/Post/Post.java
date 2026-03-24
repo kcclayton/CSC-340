@@ -23,16 +23,16 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postID;
 
-    @Column(nullable = false)
+    @Column
     private String postTitle;
 
-    @Column(nullable = false)
+    @Column
     private String postContent;
 
     @Column
     private String postTag;
 
-    @Column(nullable = false, updatable = false)
+    @Column
     private LocalDateTime createdAt;
 
     @ManyToOne
