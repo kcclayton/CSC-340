@@ -102,25 +102,30 @@ Core domains:
 **Example POST /ras request body:**
 ```json
 {
-  "username": "ra_johnson",
-  "email": "johnson@uncg.edu",
-  "userPassword": "SecurePass123!",
-  "name": "Alex Johnson",
-  "residenceDescription": "North Hall - 2nd Floor"
+  "email": "johnny.dough@example.com",
+  "userPassword": "securePassword123!",
+  "name": "Johnny Dough",
+  "username": "johnny.dough",
+  "role": "STUDENT",
+  "residenceHall": "Guilford",
+  "description": "I love living on campus!",
+  "status": "ACTIVE"
 }
 ```
  
 **Example response:**
 ```json
 {
-  "userId": 1,
-  "username": "ra_johnson",
-  "email": "johnson@uncg.edu",
-  "name": "Alex Johnson",
-  "role": "RA",
-  "residenceDescription": "North Hall - 2nd Floor",
-  "bans": [],
-  "eventPosts": []
+	"residenceHall": "Guilford",
+	"description": "I love living on campus!",
+	"status": "ACTIVE",
+	"posts": null,
+	"replies": null,
+	"email": "johnny.dough@example.com",
+	"name": "Johnny Dough",
+	"role": "STUDENT",
+	"userId": 11,
+	"username": "johnny.dough"
 }
 ```
 
