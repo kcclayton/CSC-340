@@ -36,7 +36,6 @@ public class User {
     public enum UserRole {
         STUDENT,
         RA
-    }
-
+    } 
 
 }

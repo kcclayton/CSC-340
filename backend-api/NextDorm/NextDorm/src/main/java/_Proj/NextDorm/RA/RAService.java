@@ -3,10 +3,12 @@ import _Proj.NextDorm.User.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class RAService {
 
     @Autowired
@@ -40,8 +42,16 @@ public class RAService {
 
     // Update an existing RA
     public RA updateRA(Long id, RA updatedRA) {
-        updatedRA.setUserId(id);
-        return raRepository.save(updatedRA);
+        return raRepository.findById(id).map(existingRA -> {
+            existingRA.setBuilding(updatedRA.getBuilding());
+            existingRA.setFloorSection(updatedRA.getFloorSection());
+            existingRA.setStaffId(updatedRA.getStaffId());
+            existingRA.setName(updatedRA.getName());
+            existingRA.setEmail(updatedRA.getEmail());
+            existingRA.setUsername(updatedRA.getUsername());
+            existingRA.setUserPassword(updatedRA.getUserPassword());
+            return raRepository.save(existingRA);
+        }).orElseThrow(() -> new RuntimeException("RA not found"));
     }
 
     // Delete an RA

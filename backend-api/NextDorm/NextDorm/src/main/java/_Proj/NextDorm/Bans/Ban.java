@@ -36,4 +36,8 @@ public class Ban {
 
     @Column(nullable = false)
     private boolean active;
+
+    @Version
+    private Long version;
+
 }

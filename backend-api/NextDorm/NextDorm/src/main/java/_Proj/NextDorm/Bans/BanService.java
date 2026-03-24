@@ -2,10 +2,12 @@ package _Proj.NextDorm.Bans;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class BanService {
 
     @Autowired
@@ -44,8 +46,15 @@ public class BanService {
 
     // Update a ban
     public Ban updateBan(Long id, Ban updatedBan) {
-        updatedBan.setBanId(id);
-        return banRepository.save(updatedBan);
+        return banRepository.findById(id).map(existingBan -> {
+            existingBan.setBannedUserId(updatedBan.getBannedUserId());
+            existingBan.setIssuedByRaId(updatedBan.getIssuedByRaId());
+            existingBan.setReason(updatedBan.getReason());
+            existingBan.setStartDate(updatedBan.getStartDate());
+            existingBan.setEndDate(updatedBan.getEndDate());
+            existingBan.setActive(updatedBan.isActive());
+            return banRepository.save(existingBan);
+        }).orElseThrow(() -> new RuntimeException("Ban not found"));
     }
 
     // Lift a ban (set active to false)
