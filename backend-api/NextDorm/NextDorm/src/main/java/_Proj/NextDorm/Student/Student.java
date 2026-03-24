@@ -9,7 +9,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
@@ -22,6 +21,7 @@ import java.util.List;
 @PrimaryKeyJoinColumn(name = "student_id")
 
 public class Student extends User {
+
     
     @Column(nullable = false)
     private String residenceHall;
@@ -31,7 +31,7 @@ public class Student extends User {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private studentStatus status;
+    private studentStatus status = studentStatus.ACTIVE;
 
 
     public enum studentStatus {
@@ -47,9 +47,6 @@ public class Student extends User {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties({"student", "posts"})
     private List<Reply> replies;
-
-    @JsonIgnore
-    private String userPassword;
     
 
 }

@@ -47,8 +47,45 @@ Core domains:
 ## 4. API Endpoints
 
 ### Student Management
- <!-- Student info goes here! -->
+| Method | Endpoint | Description                                                    |
+|--------|----------|----------------------------------------------------------------|
+| GET | `/students`                         | Get all Students                       |
+| GET | `/students/{id}`                    | Get a Student by ID                    |
+| GET | `/students/email/{email}`           | Get a student by their email           |
+| GET | `/students/hall/{residenceHall}`    | Get all students from a residence hall |
+| POST | `/students`                        | Create a new student                   |
+| PUT | `/students/{id}`                    | Update an existing student             |
+| DELETE | `/students/{id}`                 | Delete a student                       |
 
+**Example POST /students request body:**
+```json
+{
+  "username": "jane.socool",
+  "email": "jane@test.com",
+  "userPassword": "real_password",
+  "name": "Jane Doe",
+  "residenceHall": "Cone",
+  "description": "Really cool person",
+  "status": "ACTIVE"
+}
+```
+
+**Example response:**
+```json
+{
+  "userId": 2,
+  "username": "jane.socool",
+  "email": "jane@test.com",
+  "userPassword": "real_password",
+  "name": "Jane Doe",
+  "residenceHall": "Cone",
+  "description": "Really cool person",
+  "status": "ACTIVE",
+  "role": "STUDENT",
+  "posts": [],
+  "replies": []
+}
+```
 ---
 
 ### RA Management
@@ -90,13 +127,100 @@ Core domains:
 ---
 
 ### Post Management
-<!-- Post info goes here! -->
+| Method | Endpoint | Description                                               |
+|--------|----------|-----------------------------------------------------------|
+| GET | `/posts`                         | Get all posts                        |
+| GET | `/posts/{id}`                    | Get a post by ID                     |
+| GET | `/posts/student/{studentId}`     | Get a post by its associated student |
+| POST | `/posts`                        | Create a new post                    |
+| PUT | `/posts/{id}`                    | Update an existing post              |
+| DELETE | `/posts/{id}`                 | Delete a post                        |
 
+**Example POST /posts request body:**
+```json
+{
+  "postTitle": "Midterms",
+  "postContent": "Should i quit college and become a nomad if i failed a midterm?",
+  "postTag": "Question",
+  "student": {
+    "userId": 1
+  }
+}
+```
+
+**Example Response:**
+```json
+{
+	"postID": 4,
+	"postTitle": "Midterms",
+	"postContent": "Should i quit college and become a nomad if i failed a midterm?",
+	"postTag": "Question",
+	"createdAt": "2026-03-23T23:35:16.0026839",
+	"student": {
+		"residenceHall": null,
+		"description": null,
+		"status": null,
+		"email": null,
+		"name": null,
+		"role": null,
+		"userId": 1,
+		"username": null
+	},
+	"replies": null
+}
+```
 ---
 
 ### Reply Management
-<!-- Reply info goes here! -->
+| Method | Endpoint | Description                                                  |
+|--------|----------|--------------------------------------------------------------|
+| GET | `/replies`                         | Get all replies                       |
+| GET | `/replies/{id}`                    | Get a reply by ID                     |
+| GET | `/replies/post/{postId}`           | Get a reply by its associated post    |
+| POST | `/replies`                        | Create a new reply                    |
+| PUT | `/replies/{id}`                    | Update an existing reply              |
+| DELETE | `/replies/{id}`                 | Delete a reply                        |
 
+**Example POST /replies request body**
+```json
+{
+  "replyContent": "Wow thats so cool man.",
+  "post": {
+    "postID": 2
+  },
+  "student": {
+    "userId": 1
+  }
+}
+```
+
+**Example response**
+```json
+[
+	{
+		"replyID": 3,
+		"replyContent": "Wow thats so cool man.",
+		"createdAt": "2026-03-23T03:04:04",
+		"post": {
+			"postID": 2,
+			"postTitle": "Caf fire",
+			"postContent": "The fire alarm is going off at the caf rn. I dont know if theres actual a fire or not tho.",
+			"postTag": "Emergency",
+			"createdAt": "2026-03-22T21:39:06.802055"
+		},
+		"student": {
+			"residenceHall": "Cone",
+			"description": "Really cool person",
+			"status": "ACTIVE",
+			"email": "jane@test.com",
+			"name": "Jane Doe",
+			"role": "STUDENT",
+			"userId": 1,
+			"username": "jane.socool"
+		}
+	}
+]
+```
 ---
 
 ### Event Management
@@ -180,3 +304,10 @@ Core domains:
 | Create Post / Announcement | US-PROV-003 | `POST /eventposts` |
 | Announce Globally | US-PROV-004 | `POST /eventposts`, `GET /eventposts` |
 | Block Users from Posting | US-PROV-005 | `POST /bans`, `DELETE /bans/{id}` |
+
+| Use Case | ID | Endpoint(s) |
+|----------|----|-------------|
+| Create Student Profile | US-CUST-001 | `POST /students` |
+| Login as Student | US-CUST-002       | `GET /students/{id}` |
+| Create Post | US-CUST-003            | `POST /posts` |
+| Reply to Posts | US-CUST-004         | `POST /replies` | 

@@ -1,4 +1,5 @@
 package _Proj.NextDorm.Student;
+import _Proj.NextDorm.User.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ public class StudentService {
     private StudentRepository studentRepository;
 
     public Student createStudent(Student student){
+        student.setRole(User.UserRole.STUDENT);
         return studentRepository.save(student);
     }
 
