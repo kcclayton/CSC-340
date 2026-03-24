@@ -27,10 +27,10 @@ public class RAController {
     }
 
     // GET all RAs by residence description
-    // localhost:8080/ras/residence/North Hall
-    @GetMapping("/residence/{residenceDescription}")
-    public List<RA> getRAsByResidenceDescription(@PathVariable String residenceDescription) {
-        return raService.getRAsByResidenceDescription(residenceDescription);
+    // localhost:8080/ras/residence/search?residenceDescription=north-hall
+    @GetMapping("/residence/search")
+    public List<RA> searchRAsByResidenceDescription(@RequestParam String residenceDescription) {
+        return raService.searchRAsByResidenceDescription(residenceDescription);
     }
 
     // POST - create a new RA

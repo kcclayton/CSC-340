@@ -22,9 +22,9 @@ public class RAService {
         return raRepository.findById(id);
     }
 
-    // Get all RAs by residence description
-    public List<RA> getRAsByResidenceDescription(String residenceDescription) {
-        return raRepository.findByResidenceDescription(residenceDescription);
+    // Search all RAs by residence description
+    public List<RA> searchRAsByResidenceDescription(String residenceDescription) {
+        return raRepository.findByResidenceDescriptionContainingIgnoreCase(residenceDescription);
     }
 
     // Create a new RA

@@ -8,6 +8,6 @@ import java.util.List;
 public interface RARepository extends JpaRepository<RA, Long> {
 
     // Find all RAs by residence description
-    List<RA> findByResidenceDescription(String residenceDescription);
+    List<RA> findByResidenceDescriptionContainingIgnoreCase(String residenceDescription);
     
 }
