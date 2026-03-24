@@ -5,8 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.List;
 
 import _Proj.NextDorm.Student.Student;
+import _Proj.NextDorm.Reply.Reply;
 
 import java.time.LocalDateTime;
 
@@ -35,8 +37,12 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
-    @JsonIgnoreProperties("posts")
+    @JsonIgnoreProperties({"posts", "replies"})
     private Student student;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties({"post", "student"})
+    private List<Reply> replies;
 
     @PrePersist
     protected void onCreate() {
