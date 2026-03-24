@@ -26,18 +26,11 @@ public class BanController {
         return banService.getBanById(id);
     }
 
-    // GET all bans for a specific user
-    // localhost:8080/bans/user/1
-    @GetMapping("/user/{userId}")
-    public List<Ban> getBansByUser(@PathVariable Long userId) {
-        return banService.getBansByUser(userId);
-    }
-
-    // GET all currently active bans
-    // localhost:8080/bans/active
-    @GetMapping("/active")
-    public List<Ban> getActiveBans() {
-        return banService.getActiveBans();
+    // GET all bans for a specific student
+    // localhost:8080/bans/student/1
+    @GetMapping("/student/{studentId}")
+    public List<Ban> getBansByStudent(@PathVariable Long studentId) {
+        return banService.getBansByStudent(studentId);
     }
 
     // GET all bans issued by a specific RA
@@ -61,13 +54,6 @@ public class BanController {
         return banService.updateBan(id, ban);
     }
 
-    // PUT - lift a ban (deactivate without deleting)
-    // localhost:8080/bans/1/lift
-    @PutMapping("/{id}/lift")
-    public Ban liftBan(@PathVariable Long id) {
-        return banService.liftBan(id);
-    }
-
     // DELETE - remove a ban record
     // localhost:8080/bans/1
     @DeleteMapping("/{id}")
@@ -75,4 +61,5 @@ public class BanController {
         banService.deleteBan(id);
         return "Ban with ID " + id + " has been deleted.";
     }
+    
 }

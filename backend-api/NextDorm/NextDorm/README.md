@@ -63,15 +63,15 @@ POST /ras
 Content-Type: application/json
 
 {
-  "building": "North Hall",
-  "floorSection": "Floor 2",
-  "staffId": "RA-001",
-  "email": "bob@university.edu",
-  "name": "Bob Smith",
-  "role": "RA",
-  "userId": 3,
-  "userPassword": "BobPassword",
-  "username": "ra_bob"
+	"residenceDescription": "North Hall - 2nd Floor",
+	"bans": null,
+	"event": null,
+	"email": "johnson@uncg.edu",
+	"name": "Alex Johnson",
+	"role": "RA",
+	"userId": 9,
+	"userPassword": "SecurePass123!",
+	"username": "ra_johnson"
 }
 ```
 
@@ -126,12 +126,11 @@ POST /events
 Content-Type: application/json
 
 {
-  "eventId": 1,
-  "title": "Fire Drill",
-  "description": "Building-wide fire drill at 6pm.",
-  "eventDate": "2026-03-25T18:00:00",
-  "location": "North Hall",
-  "createdByRaId": 2
+  "organizationName": "North Hall RAs",
+  "eventDate": "2026-04-01",
+  "location": "North Hall Front Lawn",
+  "description": "Mandatory fire drill for all residents",
+  "ra": { "userId": 9 }
 }
 ```
 
@@ -176,12 +175,10 @@ POST /bans
 Content-Type: application/json
 
 {
-  "bannedUserId": 1,
-  "issuedByRaId": 2,
-  "reason": "Violating community guidelines",
-  "startDate": "2026-03-23",
-  "endDate": "2026-03-30",
-  "active": true
+  "studentId": 1,
+  "ra": { "userId": 9 },
+  "description": "Violation of community guidelines",
+  "banLength": 30
 }
 ```
 

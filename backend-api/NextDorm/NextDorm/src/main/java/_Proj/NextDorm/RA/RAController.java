@@ -26,18 +26,11 @@ public class RAController {
         return raService.getRAById(id);
     }
 
-    // GET all RAs for a specific building
-    // localhost:8080/ras/building/North Hall
-    @GetMapping("/building/{building}")
-    public List<RA> getRAsByBuilding(@PathVariable String building) {
-        return raService.getRAsByBuilding(building);
-    }
-
-    // GET an RA by staff ID
-    // localhost:8080/ras/staff/RA-001
-    @GetMapping("/staff/{staffId}")
-    public Optional<RA> getRAByStaffId(@PathVariable String staffId) {
-        return raService.getRAByStaffId(staffId);
+    // GET all RAs by residence description
+    // localhost:8080/ras/residence/North Hall
+    @GetMapping("/residence/{residenceDescription}")
+    public List<RA> getRAsByResidenceDescription(@PathVariable String residenceDescription) {
+        return raService.getRAsByResidenceDescription(residenceDescription);
     }
 
     // POST - create a new RA

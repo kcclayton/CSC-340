@@ -1,11 +1,14 @@
 package _Proj.NextDorm.RA;
 
+import _Proj.NextDorm.Bans.Ban;
+import _Proj.NextDorm.Events.Event;
 import _Proj.NextDorm.User.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
 @Entity
 @Table(name = "ras")
@@ -16,14 +19,15 @@ import lombok.NoArgsConstructor;
 @PrimaryKeyJoinColumn(name = "userId")
 public class RA extends User {
 
-    // The building or hall this RA is responsible for
     @Column(nullable = false)
-    private String building;
+    private String residenceDescription;
 
-    // The floor or section this RA manages
-    private String floorSection;
+    // One RA creates many bans
+    @OneToMany(mappedBy = "ra", cascade = CascadeType.ALL)
+    private List<Ban> bans;
 
-    // Employee/staff ID for verification
-    @Column(nullable = false, unique = true)
-    private String staffId;
+    // One RA creates many event posts
+    @OneToMany(mappedBy = "ra", cascade = CascadeType.ALL)
+    private List<Event> event;
+
 }

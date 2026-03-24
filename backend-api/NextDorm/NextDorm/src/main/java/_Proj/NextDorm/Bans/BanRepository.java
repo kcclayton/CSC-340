@@ -7,12 +7,10 @@ import java.util.List;
 @Repository
 public interface BanRepository extends JpaRepository<Ban, Long> {
 
-    // Find all bans for a specific user
-    List<Ban> findByBannedUserId(Long bannedUserId);
-
-    // Find all active bans
-    List<Ban> findByActive(boolean active);
+    // Find all bans for a specific student
+    List<Ban> findByStudentId(Long studentId);
 
     // Find all bans issued by a specific RA
-    List<Ban> findByIssuedByRaId(Long raId);
+    List<Ban> findByRa_UserId(Long raId);
+    
 }

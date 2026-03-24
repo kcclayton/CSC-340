@@ -1,13 +1,13 @@
 package _Proj.NextDorm.Events;
 
+import _Proj.NextDorm.RA.RA;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "events")
+@Table(name = "event_posts")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,22 +18,18 @@ public class Event {
     private Long eventId;
 
     @Column(nullable = false)
-    private String title;
+    private String organizationName;
 
     @Column(nullable = false)
-    private String description;
-
-    @Column(nullable = false)
-    private LocalDateTime eventDate;
+    private String eventDate;
 
     @Column(nullable = false)
     private String location;
 
-    // The RA who created the event
     @Column(nullable = false)
-    private Long createdByRaId;
+    private String description;
 
-    @Version
-    private Long version;
-
+    @ManyToOne
+    @JoinColumn(name = "raId", nullable = false)
+    private RA ra;
 }
