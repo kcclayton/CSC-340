@@ -1,5 +1,7 @@
 package _Proj.NextDorm.Bans;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import _Proj.NextDorm.RA.RA;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,6 +24,7 @@ public class Ban {
 
     @ManyToOne
     @JoinColumn(name = "raId", nullable = false)
+    @JsonBackReference("ra-bans")
     private RA ra;
 
     @Column(nullable = false)

@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "ras")
@@ -24,10 +25,12 @@ public class RA extends User {
 
     // One RA creates many bans
     @OneToMany(mappedBy = "ra", cascade = CascadeType.ALL)
+    @JsonManagedReference("ra-bans")
     private List<Ban> bans;
 
     // One RA creates many event posts
     @OneToMany(mappedBy = "ra", cascade = CascadeType.ALL)
+    @JsonManagedReference("ra-events")
     private List<Event> event;
 
 }

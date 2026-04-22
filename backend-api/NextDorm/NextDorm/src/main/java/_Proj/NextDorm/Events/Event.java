@@ -1,5 +1,7 @@
 package _Proj.NextDorm.Events;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import _Proj.NextDorm.RA.RA;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,5 +33,6 @@ public class Event {
 
     @ManyToOne
     @JoinColumn(name = "raId", nullable = false)
+    @JsonBackReference("ra-events")
     private RA ra;
 }
