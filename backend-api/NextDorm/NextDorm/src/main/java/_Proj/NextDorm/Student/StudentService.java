@@ -55,4 +55,13 @@ public class StudentService {
     public List<Student> getStudentByResidenceHall(String residenceHall){
         return studentRepository.findByResidenceHall(residenceHall);
     }
+
+    public Student authenticate(String email, String password) {
+        Student student = getStudentByEmail(email);
+        if (student != null && student.getUserPassword().equals(password)) {
+            return student;
+        } else {
+            throw new RuntimeException("Invalid email or password");
+        }
+    }
 }

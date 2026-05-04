@@ -84,7 +84,15 @@
     </div>
 
     <!--Main reply section-->
+  <div class="card post mx-4 my-2">
 
+                        <div class="card-top-section d-flex flex-column align-items-start">
+                            <h3>${post.postTitle}</h3>
+                            <h5>${post.student.username} | ${post.createdAt}</h5>
+                        </div>
+
+                        <p class="card-text">${post.postContent}</p>
+                        <p class="card-text"><small></small></p>
 
         <div class="reply-section">
                 <form action="/students/replies/create/${postID}" method="post">
@@ -96,6 +104,7 @@
                     <button type="submit" class="btn btn-outline-custom" id="post-btn">Post</button>
                 </form>
         </div>
+    </div>
 
 
                     

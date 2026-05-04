@@ -22,6 +22,10 @@ public class PostService {
         return postRepository.findAll();
     }
 
+    public List<Post> getPostsByHall(String residenceHall){
+        return postRepository.findByStudent_ResidenceHall(residenceHall);
+    }
+
     public List<Post> getPostsByStudentId(Long studentID) {
         return postRepository.findByStudentId(studentID);
     }
