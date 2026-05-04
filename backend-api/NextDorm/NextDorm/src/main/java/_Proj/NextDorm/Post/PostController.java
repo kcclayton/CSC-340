@@ -40,6 +40,12 @@ public class PostController {
         return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
+    @GetMapping("/hall/{residenceHall}")
+    public ResponseEntity<List<Post>> getPostsByResidenceHall(@PathVariable String residenceHall){
+        List<Post> posts = postService.getPostsByHall(residenceHall);
+        return new ResponseEntity<>(posts, HttpStatus.OK);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post postDetails) {
         try {

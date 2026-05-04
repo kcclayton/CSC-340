@@ -21,7 +21,7 @@
 
     <!-- STYLE SHEET -->
 
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="/dashboard.css">
 
 </head>
 
@@ -36,7 +36,7 @@
             <!-- HEADER LOGO -->
 
             <a class="navbar-brand" href="index.html">
-                <img src="images/nextdorm-logo-alt3.png" alt="Logo" width="155" height="55"
+                <img src="/images/nextdorm-logo-alt3.png" alt="Logo" width="155" height="55"
                     class="d-inline-block align-text-top">
             </a>
 
@@ -62,14 +62,14 @@
             <!-- USER BAN BUTTON -->
 
                 <a class="navbar-icon" id="user-ban-icon" href="user-ban-form.html">
-                    <img src="images/nextdorm-icon-user-ban-form.png" alt="Logo" width="60" height="60"
+                    <img src="/images/nextdorm-icon-user-ban-form.png" alt="Logo" width="60" height="60"
                         class="d-inline-block align-text-top">
                 </a>
 
             <!-- PROFILE BUTTON -->
 
                 <a class="navbar-icon" id="profile-icon" href="profile-edit.html">
-                    <img src="images/nextdorm-icon-profile.png" alt="Logo" width="60" height="60"
+                    <img src="/images/nextdorm-icon-profile.png" alt="Logo" width="60" height="60"
                         class="d-inline-block align-text-top">
                 </a>
 
@@ -124,13 +124,13 @@
                     <!-- ALL BUTTON -->
 
                     <li class="feed-btn">
-                        <a class="nav-link" href="/students"><b>All</b></a>
+                        <a class="nav-link" href="/students">All</a>
                     </li>
 
                     <!-- ANNOUNCEMENTS BUTTON -->
 
                     <li class="feed-btn">
-                        <a class="nav-link" href="/students/posts/${student.residenceHall}">Your Building</a>
+                        <a class="nav-link" href="#"><b>Your Building</b></a>
                     </li>
 
                     <!-- EVENTS BUTTON -->
@@ -145,24 +145,24 @@
 
                 </ul>
 
-            <!-- POST FEED -->
+                <!-- POST FEED -->
 
                 <div class="card home-feed mx-3">
 
                 <!-- POSTS -->
 
-                <#list commentsList as post>
+                <#list commentsHallList as post>
+                 <#if post.student??>
                     <div class="card post mx-4 my-2">
 
                         <ul class="container card-top-section">
 
-                            <li class="card-title post-title">${post.postTitle}</li>              
-                            <a href="/students/${post.student.userId}">
+                            <li class="card-title post-title">${post.postTitle}</li>
+                            
                             <li class="title-info">${post.student.username} | ${post.student.residenceHall} @ ${post.createdAt}</li>
-                            </a>
                             <li class="comment-btn">
                                 <a href="/students/replies/create/${post.postID}">
-                                    <img src="images/comment-icon.png" alt="Logo" width="30" height="30"
+                                    <img src="/images/comment-icon.png" alt="Logo" width="30" height="30"
                                         class="d-inline-block align-text-top">
                                 </a>
                             </li>
@@ -173,13 +173,14 @@
                         <p class="card-text"><small></small></p>
 
                     <#list post.replies as reply>
+                        <#if reply.student??>
                         <div class="card-body" id="fixt-link" style="border-top: rgb(215, 215, 215) solid 1px">
                             
                             <div class="container comment">
 
                                 <p class="comment-info">${reply.student.username} | ${reply.createdAt}</p>
                                 <a class="reply-btn" href="../Customer/reply.html">
-                                    <img src="images/reply-icon.png" alt="Logo" width="20" height="20"
+                                    <img src="/images/reply-icon.png" alt="Logo" width="20" height="20"
                                         class="d-inline-block align-text-top">
                                 </a>
 
@@ -188,10 +189,12 @@
                             <p class="comment-text">${reply.replyContent}</p>
 
                         </div>
+                        </#if>
                     </#list>
 
                     </div>
 
+                      </#if>
                 </#list>
 
 
@@ -203,6 +206,7 @@
     </div>
 
 </div>
+
 
 
 
