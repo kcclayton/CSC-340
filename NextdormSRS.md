@@ -103,7 +103,7 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
   _Acceptance:_
   > Must be an employee at an accepted university
   ```gherkin
-  Scenario: Creating a user profile
+  Scenario: Creating an RA profile
     Given I have not registered an account
     When  I click the create profile button
     Then  I can choose a username and password for my account, and enter information about myself for others to see
@@ -114,22 +114,194 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
   > Username must be at least 6 characters long.\
   > Password must be at least 12 characters long, and contain at least 1 capital 
   ```gherkin
+   Scenario: Logging in as an RA
+    Given I want to log in to my account
+    When  I go to the login screen
+    Then  I enter my username and password and am logged in to my account 
+  ```
+  - **US‑PROV‑003 — Update RA Profile**  
+  _Story:_ As an RA, I want to log in so I can come back to what I was doing before.\
+  _Acceptance:_
+  > Must be logged in as an RA
+  ```gherkin
+   Scenario: Updating RA Profile
+    Given I want to update my account
+    When  I go to my account profile and click the edit button
+    Then  I enter the information I want to update
+  ```
+  - **US‑PROV‑004 — Delete RA Profile**  
+  _Story:_ As an RA, I want to delete the RA profile I created when I no longer need it.\
+  _Acceptance:_
+  > Must be logged in as an RA
+  ```gherkin
+   Scenario: Deleting an RA profile
+    Given I want to delete my profile
+    When  I go to my profile page
+    Then  I click the delete button and confirm my intention to delete the account 
+  ```
+  - **US‑PROV‑005 — View List of All RAs**  
+  _Story:_ As an RA, I want to see a list of all other RAs so I know who my coworkers are online.\ 
+  _Acceptance:_
+  > Must be logged in as an RA
+  ```gherkin
+  Scenario: View all RAs
+    Given I want to see a list of all RAs
+    When  I click the View Peers button
+    Then  I can see a full list of all current RAs
+  ```
+- **US‑PROV‑006 — View RAs by ID**  
+  _Story:_ As an RA, I want to be able to view a specific RA's profile.\ 
+  _Acceptance:_
+  > Must be logged in as an RA
+  ```gherkin
+  Scenario: Viewing RAs by ID
+    Given I want to see a specific RA's profile
+    When  I click on their username
+    Then  I can see their profile
+  ```
+  - **US‑PROV‑007 — View RAs by Residence**  
+  _Story:_ As a provider, I want to make announcements to all my residents so that they all get the same information at the same time.\ 
+  _Acceptance:_
+  > Must be logged in as an RA
+  ```gherkin
+  Scenario: Make global announcements
+    Given I want to send all my residents the same announcement
+    When  I open the announcements tab
+    Then  I can write an announcement with a subject and body text that will be sent to all the residents I'm responsible for
+  ```
+  - **US‑PROV‑008 — Create Event Post**  
+  _Story:_ As an RA, I want to log in so that I can come back to what I was doing before.\
+  _Acceptance:_
+  > Username must be at least 6 characters long.\
+  > Password must be at least 12 characters long, and contain at least 1 capital 
+  ```gherkin
    Scenario: Logging in
     Given I want to log in to my account
     When  I go to the login screen
     Then  I enter my username and password and am logged in to my account 
   ```
-- **US‑PROV‑003 — Create Post**  
+  - **US‑PROV‑009 — Update Existing Event Post**  
+  _Story:_ As an RA, I want to log in so that I can come back to what I was doing before.\
+  _Acceptance:_
+  > Username must be at least 6 characters long.\
+  > Password must be at least 12 characters long, and contain at least 1 capital 
+  ```gherkin
+   Scenario: Logging in
+    Given I want to log in to my account
+    When  I go to the login screen
+    Then  I enter my username and password and am logged in to my account 
+  ```
+  - **US‑PROV‑010 — Delete Event Post**  
+  _Story:_ As an RA, I want to log in so that I can come back to what I was doing before.\
+  _Acceptance:_
+  > Username must be at least 6 characters long.\
+  > Password must be at least 12 characters long, and contain at least 1 capital 
+  ```gherkin
+   Scenario: Logging in
+    Given I want to log in to my account
+    When  I go to the login screen
+    Then  I enter my username and password and am logged in to my account 
+  ```
+  - **US‑PROV‑011 — View All Event Posts**  
+  _Story:_ As an RA, I want to log in so that I can come back to what I was doing before.\
+  _Acceptance:_
+  > Username must be at least 6 characters long.\
+  > Password must be at least 12 characters long, and contain at least 1 capital 
+  ```gherkin
+   Scenario: Logging in
+    Given I want to log in to my account
+    When  I go to the login screen
+    Then  I enter my username and password and am logged in to my account 
+  ```
+- **US‑PROV‑012 — View Specific Event Post**  
   _Story:_ As an RA, I want to create posts so that I can share information with my community.\
   _Acceptance:_
-  > Must be logged in as a user
+  > Must be logged in as an RA
   ```gherkin
   Scenario: Create a post
     Given I want to create a post
     When  I go to the create post page
     Then  I can write a title, text, add pictures, and send it out for other users to see
   ```
-- **US‑PROV‑004 — Announce Globally**  
+  - **US‑PROV‑013 — View Event Posts From Specific RA**  
+  _Story:_ As an RA, I want to log in so that I can come back to what I was doing before.\
+  _Acceptance:_
+  > Username must be at least 6 characters long.\
+  > Password must be at least 12 characters long, and contain at least 1 capital 
+  ```gherkin
+   Scenario: Logging in
+    Given I want to log in to my account
+    When  I go to the login screen
+    Then  I enter my username and password and am logged in to my account 
+  ```
+  - **US‑PROV‑014 — Create New Ban**  
+  _Story:_ As an RA, I want to log in so that I can come back to what I was doing before.\
+  _Acceptance:_
+  > Username must be at least 6 characters long.\
+  > Password must be at least 12 characters long, and contain at least 1 capital 
+  ```gherkin
+   Scenario: Logging in
+    Given I want to log in to my account
+    When  I go to the login screen
+    Then  I enter my username and password and am logged in to my account 
+  ```
+  - **US‑PROV‑015 — Update Existing Ban**  
+  _Story:_ As an RA, I want to log in so that I can come back to what I was doing before.\
+  _Acceptance:_
+  > Username must be at least 6 characters long.\
+  > Password must be at least 12 characters long, and contain at least 1 capital 
+  ```gherkin
+   Scenario: Logging in
+    Given I want to log in to my account
+    When  I go to the login screen
+    Then  I enter my username and password and am logged in to my account 
+  ```
+  - **US‑PROV‑016 — Delete Existing Ban**  
+  _Story:_ As an RA, I want to log in so that I can come back to what I was doing before.\
+  _Acceptance:_
+  > Username must be at least 6 characters long.\
+  > Password must be at least 12 characters long, and contain at least 1 capital 
+  ```gherkin
+   Scenario: Logging in
+    Given I want to log in to my account
+    When  I go to the login screen
+    Then  I enter my username and password and am logged in to my account 
+  ```
+  - **US‑PROV‑017 — View All Bans**  
+  _Story:_ As an RA, I want to log in so that I can come back to what I was doing before.\
+  _Acceptance:_
+  > Username must be at least 6 characters long.\
+  > Password must be at least 12 characters long, and contain at least 1 capital 
+  ```gherkin
+   Scenario: Logging in
+    Given I want to log in to my account
+    When  I go to the login screen
+    Then  I enter my username and password and am logged in to my account 
+  ```
+  - **US‑PROV‑018 — View Specific Ban**  
+  _Story:_ As an RA, I want to log in so that I can come back to what I was doing before.\
+  _Acceptance:_
+  > Username must be at least 6 characters long.\
+  > Password must be at least 12 characters long, and contain at least 1 capital 
+  ```gherkin
+   Scenario: Logging in
+    Given I want to log in to my account
+    When  I go to the login screen
+    Then  I enter my username and password and am logged in to my account 
+  ```
+  - **US‑PROV‑019 — View All Bans From Specific RA**  
+  _Story:_ As an RA, I want to log in so that I can come back to what I was doing before.\
+  _Acceptance:_
+  > Username must be at least 6 characters long.\
+  > Password must be at least 12 characters long, and contain at least 1 capital 
+  ```gherkin
+   Scenario: Logging in
+    Given I want to log in to my account
+    When  I go to the login screen
+    Then  I enter my username and password and am logged in to my account 
+  ```
+
+- **US‑PROV‑004 — **  
   _Story:_ As a provider, I want to make announcements to all my residents so that they all get the same information at the same time.\ 
   _Acceptance:_
   > Must be logged in as an RA
