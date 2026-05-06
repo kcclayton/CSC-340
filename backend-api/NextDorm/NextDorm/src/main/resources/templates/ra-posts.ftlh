@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RA Dashboard</title>
+    <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <link rel="icon" href="/Images/nextdorm-logo-alt2.png" type="image/png">
@@ -14,7 +14,7 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg ra-navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/ras/dashboard">
+            <a class="navbar-brand" href="/ras/posts">
                 <img src="/Images/nextdorm-logo-alt3.png" alt="Logo" width="155" height="55" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
@@ -37,11 +37,11 @@
 
     <!-- LEFT NAV -->
     <div class="nav-column">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="/ras/dashboard">Home</a>
-            </li>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item" style="font-weight: bold;">
+                <a class="nav-link" href="/ras/posts">Home</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/ras/eventposts">Events</a>
             </li>
             <li class="nav-item">
@@ -63,36 +63,44 @@
 
                 <ul class="container" id="filter-btn-container">
                     <li class="feed-btn">
-                        <a class="nav-link" href="/ras/eventposts"><b>All Events</b></a>
+                        <a class="nav-link" href="/ras/posts"><b>All</b></a>
                     </li>
                     <li class="feed-btn">
-                        <a class="nav-link" href="/ras/eventposts/my-events">My Events</a>
-                    </li>
-                    <li class="feed-btn" id="create-event">
-                        <a class="nav-link" href="/ras/events/create">Create an Event</a>
+                        <a class="nav-link" href="#">Important</a>
                     </li>
                 </ul>
 
-                <!-- EVENT FEED -->
                 <div class="card home-feed mx-3">
 
-                    <#list eventsList as event>
+                    <#list commentsList as post>
                     <div class="card post mx-4 my-2">
 
                         <ul class="container card-top-section">
-                            <li class="card-title post-title">${event.description}</li>
-                            <li class="title-info">${event.organizationName} | ${event.eventDate} | ${event.location}</li>
+                            <li class="card-title post-title">${post.postTitle!""}</li>
+                            <li class="title-info">
+                                <#if post.student??>${post.student.username}<#else>unknown</#if>
+                                | ${post.createdAt!""}
+                            </li>
+                            <li class="comment-btn">
+                                <a href="/students/replies/create/${post.postID}">
+                                    <img src="/Images/comment-icon.png" alt="Reply" width="30" height="30" class="d-inline-block align-text-top">
+                                </a>
+                            </li>
                         </ul>
 
-                        <p class="card-text event-info"></p>
+                        <p class="card-text"><b>${post.postTag!""}</b> | ${post.postContent!""}</p>
 
-                        <div class="d-flex gap-2 mx-3 mb-2">
-                            <a href="/ras/events/edit/${event.eventId}" class="btn btn-outline-custom btn-sm">Edit</a>
-                            <form action="/ras/events/delete/${event.eventId}" method="post" style="display:inline;">
-                                <button type="submit" class="btn btn-danger btn-sm"
-                                    onclick="return confirm('Delete this event?')">Delete</button>
-                            </form>
+                        <#list post.replies as reply>
+                        <div class="card-body" id="fixt-link" style="border-top: rgb(215, 215, 215) solid 1px">
+                            <div class="container comment">
+                                <p class="comment-info">
+                                    <#if reply.student??>${reply.student.username}<#else>unknown</#if>
+                                    | ${reply.createdAt!""}
+                                </p>
+                            </div>
+                            <p class="comment-text">${reply.replyContent!""}</p>
                         </div>
+                        </#list>
 
                     </div>
                     </#list>
@@ -128,7 +136,7 @@
         </div>
     </div>
 
-    <!-- SIGN OUT MODAL -->
+    <!-- Sign Out Confirmation Modal -->
     <div class="modal fade" id="signoutModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -136,7 +144,7 @@
                     <h5 class="modal-title">Sign Out</h5>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to sign out?
+                    This will direct you back to the login page. Are you sure?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Go Back</button>
