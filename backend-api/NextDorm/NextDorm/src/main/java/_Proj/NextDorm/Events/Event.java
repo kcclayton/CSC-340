@@ -1,6 +1,6 @@
 package _Proj.NextDorm.Events;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import _Proj.NextDorm.RA.RA;
 import jakarta.persistence.*;
@@ -33,6 +33,6 @@ public class Event {
 
     @ManyToOne
     @JoinColumn(name = "raId", nullable = false)
-    @JsonBackReference("ra-events")
+    @JsonIgnoreProperties({"bans", "event"})
     private RA ra;
 }
