@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import _Proj.NextDorm.Post.Post;
 import _Proj.NextDorm.Post.PostService;
@@ -160,5 +161,30 @@ public class StudentUIController {
         return "redirect:/students/signin";
     }
 
+    @GetMapping("/update/{id}")
+    public String showProfilePage(@PathVariable Long id, Model model, HttpSession session){
+            Long studentID = (Long) session.getAttribute("studentID");
+
+            if (studentID == null) {
+                return "redirect:/students/signin";
+            }
+
+            Student student = studentService.getStudentById(studentID).orElse(null);
+            model.addAttribute("student", student);
+
+            return "personal-profile";
+    }
+
+
+    @PostMapping("/update/{id}")
+    public String updateStudent(@PathVariable Long id, Student updatedStudent) {
+        Student student = studentService.updateStudent(id, updatedStudent);
+        
+        if (student != null) {
+        return "redirect:/students/update/" + student.getUserId();
+        } else {
+        return "redirect:/students/" + id + "?error=true";
+        }
+    }
 
 }
