@@ -11,6 +11,8 @@ import _Proj.NextDorm.Events.Event;
 import _Proj.NextDorm.Events.EventService;
 import _Proj.NextDorm.RA.RA;
 import _Proj.NextDorm.RA.RAService;
+import _Proj.NextDorm.Post.Post;
+import _Proj.NextDorm.Post.PostService;
 import _Proj.NextDorm.User.User;
 
 import jakarta.servlet.http.HttpSession;
@@ -27,6 +29,9 @@ public class RAUIController {
 
     @Autowired
     private BanService banService;
+
+    @Autowired
+    private PostService postService;
 
     // -------------------------------------------------------------------------
     // SIGN IN / SIGN UP
@@ -72,6 +77,19 @@ public class RAUIController {
         return "redirect:/ras/signin";
     }
 
+    // Show the posts feed (home page for RAs)
+    // GET /ras/dashboard  ->  ra-posts.ftlh
+    @GetMapping("/dashboard")
+    public String viewPosts(Model model, HttpSession session) {
+        Long raID = (Long) session.getAttribute("raID");
+        if (raID == null) return "redirect:/ras/signin";
+
+        RA ra = raService.getRAById(raID).orElse(null);
+        model.addAttribute("ra", ra);
+        model.addAttribute("commentsList", postService.getAllPosts());
+        return "ra-posts";
+    }
+
     // Sign out: clear session, redirect to sign-in
     // GET /ras/signout
     @GetMapping("/signout")
@@ -81,12 +99,12 @@ public class RAUIController {
     }
 
     // -------------------------------------------------------------------------
-    // DASHBOARD (home feed — all events)
+    // EVENTS PAGE (all events)
     // -------------------------------------------------------------------------
 
-    // Show the RA dashboard with all events
-    // GET /ras/dashboard  ->  ra-dashboard.ftlh
-    @GetMapping("/dashboard")
+    // Show the RA events page with all events
+    // GET /ras/eventposts  ->  ra-dashboard.ftlh
+    @GetMapping("/eventposts")
     public String dashboard(Model model, HttpSession session) {
         Long raID = (Long) session.getAttribute("raID");
         if (raID == null) return "redirect:/ras/signin";
@@ -98,8 +116,8 @@ public class RAUIController {
     }
 
     // Show only this RA's own events
-    // GET /ras/dashboard/my-events  ->  ra-dashboard.ftlh (filtered)
-    @GetMapping("/dashboard/my-events")
+    // GET /ras/eventposts/my-events  ->  ra-dashboard.ftlh (filtered)
+    @GetMapping("/eventposts/my-events")
     public String myEvents(Model model, HttpSession session) {
         Long raID = (Long) session.getAttribute("raID");
         if (raID == null) return "redirect:/ras/signin";
@@ -215,7 +233,7 @@ public class RAUIController {
         RA ra = raService.getRAById(raID).orElse(null);
         event.setRa(ra);
         eventService.createEvent(event);
-        return "redirect:/ras/dashboard";
+        return "redirect:/ras/eventposts";
     }
 
     // Show edit event form
@@ -240,7 +258,7 @@ public class RAUIController {
         RA ra = raService.getRAById(raID).orElse(null);
         event.setRa(ra);
         eventService.updateEvent(id, event);
-        return "redirect:/ras/dashboard";
+        return "redirect:/ras/eventposts";
     }
 
     // Delete an event
@@ -251,7 +269,7 @@ public class RAUIController {
         if (raID == null) return "redirect:/ras/signin";
 
         eventService.deleteEvent(id);
-        return "redirect:/ras/dashboard";
+        return "redirect:/ras/eventposts";
     }
 
     // -------------------------------------------------------------------------
@@ -289,7 +307,7 @@ public class RAUIController {
         Long raID = (Long) session.getAttribute("raID");
         if (raID == null) return "redirect:/ras/signin";
 
-        model.addAttribute("bansList", banService.getBansByRa(raID));
+        model.addAttribute("bansList", banService.getAllBans());
         return "ra-bans";
     }
 
