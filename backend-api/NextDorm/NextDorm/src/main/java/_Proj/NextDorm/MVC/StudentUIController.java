@@ -148,4 +148,17 @@ public class StudentUIController {
         return "redirect:/signin?error";
         }
     }
+
+    @GetMapping("/signup")
+    public String showSignupPage(){
+        return "signup";
+    }
+
+    @PostMapping("/signup")
+    public String createNewStudent(Student student){
+        studentService.createStudent(student);
+        return "redirect:/students/signin";
+    }
+
+
 }

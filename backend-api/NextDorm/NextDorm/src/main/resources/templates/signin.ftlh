@@ -19,7 +19,7 @@
             <img src="/Images/nextdorm-logo.png" alt="Logo" width="60" height="54" class="d-inline-block align-text-top">
             </a>
 
-            <a href="signup.ftlh" class="btn custom-button">Create an account</a>
+            <a href="/students/signup" class="btn custom-button">Create an account</a>
         </div>
         </nav>
         
