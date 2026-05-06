@@ -9,5 +9,8 @@ public interface RARepository extends JpaRepository<RA, Long> {
 
     // Find all RAs by residence description
     List<RA> findByResidenceDescriptionContainingIgnoreCase(String residenceDescription);
-    
+
+    // Find an RA by email (used for authentication)
+    RA findByEmail(String email);
+
 }

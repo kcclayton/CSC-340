@@ -36,10 +36,26 @@ public class EventService {
         return eventRepository.save(event);
     }
 
-    // Update an existing event post
-    public Event updateEvent(Long id, Event updatedEvent) {
-        updatedEvent.setEventId(id);
-        return eventRepository.save(updatedEvent);
+    // Update an existing event post — fetch-then-patch, matching Katie's updatePost() pattern
+    public Event updateEvent(Long id, Event eventDetails) {
+        return eventRepository.findById(id).map(event -> {
+            if (eventDetails.getOrganizationName() != null) {
+                event.setOrganizationName(eventDetails.getOrganizationName());
+            }
+            if (eventDetails.getEventDate() != null) {
+                event.setEventDate(eventDetails.getEventDate());
+            }
+            if (eventDetails.getLocation() != null) {
+                event.setLocation(eventDetails.getLocation());
+            }
+            if (eventDetails.getDescription() != null) {
+                event.setDescription(eventDetails.getDescription());
+            }
+            if (eventDetails.getRa() != null) {
+                event.setRa(eventDetails.getRa());
+            }
+            return eventRepository.save(event);
+        }).orElseThrow(() -> new RuntimeException("Event not found."));
     }
 
     // Delete an event post

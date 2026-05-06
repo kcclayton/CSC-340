@@ -36,15 +36,26 @@ public class BanService {
         return banRepository.save(ban);
     }
 
-    // Update a ban
-    public Ban updateBan(Long id, Ban updatedBan) {
-        updatedBan.setBanId(id);
-        return banRepository.save(updatedBan);
+    // Update a ban — fetch-then-patch, matching Katie's updatePost() pattern
+    public Ban updateBan(Long id, Ban banDetails) {
+        return banRepository.findById(id).map(ban -> {
+            if (banDetails.getStudentId() != null) {
+                ban.setStudentId(banDetails.getStudentId());
+            }
+            if (banDetails.getDescription() != null) {
+                ban.setDescription(banDetails.getDescription());
+            }
+            if (banDetails.getRa() != null) {
+                ban.setRa(banDetails.getRa());
+            }
+            ban.setBanLength(banDetails.getBanLength());
+            return banRepository.save(ban);
+        }).orElseThrow(() -> new RuntimeException("Ban not found."));
     }
 
     // Delete a ban record
     public void deleteBan(Long id) {
         banRepository.deleteById(id);
     }
-    
+
 }
