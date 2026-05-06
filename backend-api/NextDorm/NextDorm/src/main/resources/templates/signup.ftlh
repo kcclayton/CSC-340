@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/sign-up.css">
+</head>
+<body>
+    
+    <!--Nav Bar-->
+        <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+            <img src="/Images/nextdorm-logo.png" alt="Logo" width="60" height="54" class="d-inline-block align-text-top">
+            </a>
+
+            <a href="/students/signin" class="btn custom-button">Log in</a>
+        </div>
+        </nav>
+
+
+
+        <div class="card-wrapper">
+            <div class="card">
+            <h1>Register an Account</h1>
+        
+            <form action = "/students/signup" method = "post" class="row g-3">
+                <div class="col-md-3">
+                    <label for="inputName" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+
+                <div class="w-100"></div>
+
+                <div class="col-md-4">
+                    <label for="inputUsername4" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <div class="col-md-4">
+                    <label for="inputPassword4" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="userPassword" name="userPassword">
+                </div>
+
+                <div class="w-100"></div>
+
+
+                <div class="col-md-4">
+                    <label for="inputEmail4" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="col-md-4">
+                    <label for="inputHall" class="form-label">Residence Hall</label>
+                    <input type="text" class="form-control" id="residenceHall" name="residenceHall">
+                </div>
+                <div class="col-md-12">
+                    <label for="inputDescription" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="description" name="description">
+                </div>
+                <input type="hidden" name="role" value="STUDENT">
+                <div class="col-12 d-flex justify-content-center">
+                    <button type="submit" class="custom-button" id="create-button">Create Account</button>
+                </div>
+                </form>
+                </div>
+            </div>
+                
+
+</body>
+</html>
