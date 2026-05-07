@@ -90,6 +90,7 @@ public class StudentUIController {
         
         if (!bans.isEmpty()){
             model.addAttribute("ban", bans.get(0));
+            model.addAttribute("student", student);
             return "student-ban";
         }
         
@@ -145,9 +146,10 @@ public class StudentUIController {
 
         Student student = studentService.getStudentById(studentID).orElse(null);
         List<Ban> bans = banService.getBansByStudent(studentID);
-        
+
         if (!bans.isEmpty()){
             model.addAttribute("ban", bans.get(0));
+            model.addAttribute("student", student);
             return "student-ban";
         }
 
