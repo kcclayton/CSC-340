@@ -221,13 +221,14 @@ public class StudentUIController {
 
     //Trying to get a student by their username and password.
     @PostMapping("/signin")
-    public String signin(@RequestParam String email, @RequestParam String password, HttpSession session) {
+    public String signin(@RequestParam String email, @RequestParam String password, HttpSession session, Model model) {
         try {
         Student student = studentService.authenticate(email, password);
         session.setAttribute("studentID", student.getUserId());
         return "redirect:/students";
         } catch (Exception e) {
-        return "redirect:/signin?error";
+            model.addAttribute("error", "Invalid email or password.");
+            return "signin";
         }
     }
 
