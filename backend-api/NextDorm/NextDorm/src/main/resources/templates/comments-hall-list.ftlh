@@ -61,7 +61,7 @@
             
             <!-- PROFILE BUTTON -->
 
-                <a class="navbar-icon ms-auto" id="profile-icon" href="profile-edit.html">
+                <a class="navbar-icon ms-auto" id="profile-icon" href="/students/update/${student.userId}">
                     <img src="/images/nextdorm-icon-profile.png" alt="Logo" width="60" height="60"
                         class="d-inline-block align-text-top">
                 </a>
