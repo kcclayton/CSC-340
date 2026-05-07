@@ -106,13 +106,25 @@ public class StudentUIController {
             return "redirect:/students/signin";
         }
 
+        Student student = studentService.getStudentById(studentID).orElse(null);
+
+        model.addAttribute("student", student);
         model.addAttribute("importantList", postService.getEmergencyTag());
         return "comments-important-list";
     }
 
     //Getting all posts from a certain residence hall
     @GetMapping("/posts/{residenceHall}")
-    public String getCommentsByHall(Model model, @PathVariable String residenceHall){
+    public String getCommentsByHall(Model model, @PathVariable String residenceHall, HttpSession session){
+        Long studentID = (Long) session.getAttribute("studentID");
+
+        if (studentID == null) {
+            return "redirect:/students/signin";
+        }
+
+        Student student = studentService.getStudentById(studentID).orElse(null);
+
+        model.addAttribute("student", student);
         model.addAttribute("commentsHallList", postService.getPostsByHall(residenceHall));
         return "comments-hall-list";
 
@@ -131,6 +143,7 @@ public class StudentUIController {
             return "redirect:/students/signin";
         }
 
+        Student student = studentService.getStudentById(studentID).orElse(null);
         List<Ban> bans = banService.getBansByStudent(studentID);
         
         if (!bans.isEmpty()){
@@ -138,6 +151,7 @@ public class StudentUIController {
             return "student-ban";
         }
 
+        model.addAttribute("student", student);
         model.addAttribute("reply", new Reply());
         model.addAttribute("post", post);
         return "create-reply";
