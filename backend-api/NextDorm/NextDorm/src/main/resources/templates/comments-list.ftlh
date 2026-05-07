@@ -35,7 +35,7 @@
 
             <!-- HEADER LOGO -->
 
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="/students">
                 <img src="images/nextdorm-logo-alt3.png" alt="Logo" width="155" height="55"
                     class="d-inline-block align-text-top">
             </a>
@@ -58,17 +58,10 @@
                     <button class="btn btn-outline-custom" type="submit">Search</button>
 
                 </form>
-            
-            <!-- USER BAN BUTTON -->
-
-                <a class="navbar-icon" id="user-ban-icon" href="user-ban-form.html">
-                    <img src="images/nextdorm-icon-user-ban-form.png" alt="Logo" width="60" height="60"
-                        class="d-inline-block align-text-top">
-                </a>
 
             <!-- PROFILE BUTTON -->
 
-                <a class="navbar-icon" id="profile-icon" href="/students/update/${student.userId}">
+                <a class="navbar-icon ms-auto" id="profile-icon" href="/students/update/${student.userId}">
                     <img src="images/nextdorm-icon-profile.png" alt="Logo" width="60" height="60"
                         class="d-inline-block align-text-top">
                 </a>
@@ -93,17 +86,13 @@
                 <a class="nav-link" href="/students">Home</a>
             </li>
 
-            <!-- ANNOUNCEMENTS BUTTON -->
-
-            <li class="nav-item">
-                <a class="nav-link" href="announcements.html">Announcements</a>
-            </li>
-
             <!-- EVENTS BUTTON -->
 
             <li class="nav-item">
-                <a class="nav-link" href="events.html">Events</a>
+                <a class="nav-link" href="/students/events">Events</a>
             </li>
+
+            <li class="nav-item"><a class="nav-link" href="/students/auth/signout">Sign Out</a></li>
 
     </div>
 
@@ -151,7 +140,7 @@
 
                 <!-- POSTS -->
 
-                <#list commentsList as post>
+                <#list commentsList?reverse as post>
                     <div class="card post mx-4 my-2">
 
                         <ul class="container card-top-section">

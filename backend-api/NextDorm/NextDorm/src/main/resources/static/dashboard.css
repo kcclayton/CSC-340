@@ -423,3 +423,10 @@ p {
     margin-left: 80%;
 
 }
+
+#events-heading {
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    font-weight: 100px;
+}

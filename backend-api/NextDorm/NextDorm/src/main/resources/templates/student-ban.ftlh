@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="/create-post.css">
+    <link rel="stylesheet" href="/profile.css">
 </head>
 <body>
     
@@ -54,67 +54,14 @@
         </div>
 
     </nav>
-    <!-- LEFT NAV OPTIONS -->
 
-    <div class="nav-column">
-
-        <!-- MAIN NAV BUTTONS -->
-
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-            <!-- HOME BUTTON -->
-
-            <li class="nav-item">
-                <a class="nav-link" href="/students">Home</a>
-            </li>
-
-            <!-- EVENTS BUTTON -->
-
-            <li class="nav-item">
-                <a class="nav-link" href="/students/events">Events</a>
-            </li>
-
-            <li class="nav-item"><a class="nav-link" href="/students/auth/signout">Sign Out</a></li>
-
-    </div>
-
-    <!--Post section-->
-       <div class="card-wrapper">
+    <!--Profile section-->
+     <div class="card-wrapper">
         <div class="card">
-            
-        <form action="/students/posts/create" method="post">
-
-            <div class="mx-3 mb-3">
-                <label class="form-label">Create a Post</label>
-                <input type="text" class="form-control" name="postTitle"
-                    placeholder="Enter a title for your post">
-            </div>
-
-
-            <div class="dropdown mx-3 mb-3">
-            <label class="form-label">
-                Select Tag
-            </label>
-            <select class="form-select" name="postTag">
-                <option value="Emergency">Emergency</option>
-                <option value="Question">Question</option>
-                <option value="Maintenance">Maintenance</option>
-                <option value="Issue">Issue</option>
-            </select>
-            </div>
-
-
-            <div class="mx-3 mb-3">
-                <textarea class="form-control" name="postContent" rows="8"
-                    placeholder="Enter content for your post"></textarea>
-            </div>
-
-
-            <button type="submit" class="btn btn-outline-custom" id="post-btn">Post</button>
-
-        </form>
-
-
+            <p>You currently cannot post for the following reason: ${ban.description} <br>
+            You may post again in ${ban.banLength} days.
+            </p>
+            <a href="/students" class="btn btn-primary">Back to post feed</a>
         </div>
     </div>
 

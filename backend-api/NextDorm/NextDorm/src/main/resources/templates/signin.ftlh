@@ -50,7 +50,7 @@
 
                     <p>OR</p>
                         <div class="d-flex justify-content-center">
-                            <a href="../Provider/landing.html" button type="button" class="btn" id="ra-btn">Sign in as an RA</button></a>
+                            <a href="/ras/signin" button type="button" class="btn" id="ra-btn">Sign in as an RA</button></a>
                         </div>
 
                 </div>
