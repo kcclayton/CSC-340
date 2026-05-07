@@ -102,7 +102,7 @@
             <!-- EVENTS BUTTON -->
 
             <li class="nav-item">
-                <a class="nav-link" href="events.html">Events</a>
+                <a class="nav-link" href="/students/events">Events</a>
             </li>
 
     </div>

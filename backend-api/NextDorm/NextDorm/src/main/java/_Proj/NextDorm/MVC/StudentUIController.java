@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import _Proj.NextDorm.Events.Event;
+import _Proj.NextDorm.Events.EventService;
 import _Proj.NextDorm.Post.Post;
 import _Proj.NextDorm.Post.PostService;
 import _Proj.NextDorm.Reply.Reply;
@@ -33,6 +35,9 @@ public class StudentUIController {
 
     @Autowired
     private ReplyService replyService;
+
+    @Autowired
+    private EventService eventService;
 
     //Getting all posts
     @GetMapping
@@ -158,6 +163,17 @@ public class StudentUIController {
     public String createNewStudent(Student student){
         studentService.createStudent(student);
         return "redirect:/students/signin";
+    }
+
+    // Show all events posted by RAs
+    // GET /students/events  ->  student-events.ftlh
+    @GetMapping("/events")
+    public String viewEvents(Model model, HttpSession session) {
+        Long studentID = (Long) session.getAttribute("studentID");
+        if (studentID == null) return "redirect:/students/signin";
+
+        model.addAttribute("eventsList", eventService.getAllEvents());
+        return "student-events";
     }
 
 
