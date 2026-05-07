@@ -73,7 +73,9 @@
                 <a class="nav-link" href="/students/events">Events</a>
             </li>
 
-            <li class="nav-item"><a class="nav-link" href="/students/auth/signout">Sign Out</a></li>
+           <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signoutModal">Sign Out</a>
+            </li>
 
     </div>
 
@@ -117,6 +119,23 @@
         </div>
     </div>
    
+     <!-- Sign Out Confirmation Modal -->
+    <div class="modal fade" id="signoutModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sign Out</h5>
+                </div>
+                <div class="modal-body">
+                    This will direct you back to the login page. Are you sure?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Go Back</button>
+                    <a href="/students/auth/signout" class="btn btn-outline-custom">I'm Sure</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
