@@ -12,4 +12,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
   List<Post> findByStudent_ResidenceHall(String residenceHall);
 
+  List<Post> findByPostTag(String postTag);
+
 }

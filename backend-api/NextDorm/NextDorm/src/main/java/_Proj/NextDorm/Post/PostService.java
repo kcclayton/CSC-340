@@ -26,6 +26,10 @@ public class PostService {
         return postRepository.findByStudent_ResidenceHall(residenceHall);
     }
 
+    public List<Post> getEmergencyTag(){
+        return postRepository.findByPostTag("Emergency");
+    }
+
     public List<Post> getPostsByStudentId(Long studentID) {
         return postRepository.findByStudentId(studentID);
     }
