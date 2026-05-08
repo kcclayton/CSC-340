@@ -1,1 +1,1 @@
-This is the README file for the High-Fidelity Prototype. Use this file to provide information about the prototype, its features, and how to interact with it
+This folder contains the high fidelity prototype for NextDorm. Each page is static, so there are no actual implemented features here. To view, use an extension such as "view in browser" and explore each web page. There are two folders, Customer and Provider, that have the prototypes for each use case for the respective Customer/Provider implementations.

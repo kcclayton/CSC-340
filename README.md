@@ -12,14 +12,14 @@
 > Our goal is to make the lives of RAs, Supervisors, and Residence Life professionals much easier. We also hope to create a place for connectivity and engagement for residents.
 >
 
-## App Functions (Note: work in progress!)
+## App Functions
 1. Customer (mainly residents):
     1. Create/modify profile - Register as a student with your affiliated college and edit profile contents.
     2. View posts on main feed - Browse posts located on a central feed.
     3. Sort posts by tags - Sorting posts by pre-put tags (such as "emergency", "questions", "events", etc).
-    4. Like and comment on posts - Students can comment and reply on selected posts and give them a like.
-    5. Subscribe to relevant communities - Subscribe to individual posts/threads/people.
-    6. Recieve notifications for posts from subscribed pages - Receieve notifications/updates when a subscribed page posts or when a post is commented on/altered.
+    3. Sort posts by residence hall - Sorting posts by a specific residence hall.
+    4. Create posts - Students can create a post.
+    5. Comment on posts - Students can comment and reply on selected posts.
     7. View profiles of other users - Residents can click on and view the profiles of other residents/RAs/students.
 
 2. Provider (mainly residents and RAs):
@@ -34,3 +34,13 @@
     1. Freeze select accounts from posting for an amount of time - Issue temp/permanent bans based on content.
     2. Delete inaccurate information or inappropriate content - Issue warnings and delete harmful/misleading content.
     3. View usage statistics - See number of students using the application and number of posts.
+
+### Installation Instructions
+1. Navigate to the backend-api folder.
+2. Navigate through the src folder to the main folder.
+3. From the main folder, select the resources folder.
+4. Within the resources folder, select application.properties.
+5. Put in your own unique database information.
+6. Navigate back out to the java folder.
+7. Within this folder, select Application.Java.
+8. Run the program. The easiest endpoint to access will be http://localhost:8080/students. From here, you can either create/log in to a student profile OR navigate to the RA login/signup section.
