@@ -35,7 +35,7 @@
 
             <!-- HEADER LOGO -->
 
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="/students">
                 <img src="images/nextdorm-logo-alt3.png" alt="Logo" width="155" height="55"
                     class="d-inline-block align-text-top">
             </a>
@@ -58,17 +58,10 @@
                     <button class="btn btn-outline-custom" type="submit">Search</button>
 
                 </form>
-            
-            <!-- USER BAN BUTTON -->
-
-                <a class="navbar-icon" id="user-ban-icon" href="user-ban-form.html">
-                    <img src="images/nextdorm-icon-user-ban-form.png" alt="Logo" width="60" height="60"
-                        class="d-inline-block align-text-top">
-                </a>
 
             <!-- PROFILE BUTTON -->
 
-                <a class="navbar-icon" id="profile-icon" href="/students/update/${student.userId}">
+                <a class="navbar-icon ms-auto" id="profile-icon" href="/students/update/${student.userId}">
                     <img src="images/nextdorm-icon-profile.png" alt="Logo" width="60" height="60"
                         class="d-inline-block align-text-top">
                 </a>
@@ -93,16 +86,17 @@
                 <a class="nav-link" href="/students">Home</a>
             </li>
 
-            <!-- ANNOUNCEMENTS BUTTON -->
-
-            <li class="nav-item">
-                <a class="nav-link" href="announcements.html">Announcements</a>
-            </li>
-
             <!-- EVENTS BUTTON -->
 
             <li class="nav-item">
                 <a class="nav-link" href="/students/events">Events</a>
+<<<<<<< HEAD
+=======
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signoutModal">Sign Out</a>
+>>>>>>> 0237c55d8d4603c318001a817354ce534666a65e
             </li>
 
     </div>
@@ -136,7 +130,7 @@
                     <!-- EVENTS BUTTON -->
 
                     <li class="feed-btn">
-                        <a class="nav-link" href="#">Important</a>
+                        <a class="nav-link" href="/students/posts/important">Important</a>
                     </li>
 
                     <li class="feed-btn" id="create-post">
@@ -151,7 +145,7 @@
 
                 <!-- POSTS -->
 
-                <#list commentsList as post>
+                <#list commentsList?reverse as post>
                     <div class="card post mx-4 my-2">
 
                         <ul class="container card-top-section">
@@ -254,6 +248,24 @@
 
         </div>
 
+    </div>
+
+     <!-- Sign Out Confirmation Modal -->
+    <div class="modal fade" id="signoutModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sign Out</h5>
+                </div>
+                <div class="modal-body">
+                    This will direct you back to the login page. Are you sure?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Go Back</button>
+                    <a href="/students/auth/signout" class="btn btn-outline-custom">I'm Sure</a>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>

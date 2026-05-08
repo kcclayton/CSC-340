@@ -1,5 +1,6 @@
 package _Proj.NextDorm.MVC;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import _Proj.NextDorm.Events.Event;
 import _Proj.NextDorm.Events.EventService;
@@ -22,6 +22,8 @@ import _Proj.NextDorm.Reply.Reply;
 import _Proj.NextDorm.Reply.ReplyService;
 import _Proj.NextDorm.Student.Student;
 import _Proj.NextDorm.Student.StudentService;
+import _Proj.NextDorm.Events.*;
+import _Proj.NextDorm.Bans.*;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -39,6 +41,26 @@ public class StudentUIController {
 
     @Autowired
     private EventService eventService;
+
+    @Autowired
+    private BanService banService;
+
+
+    //Getting a list of all of the events posted by RAs
+    @GetMapping("/events")
+    public String getAllEvents(Model model, HttpSession session){
+        Long studentID = (Long) session.getAttribute("studentID");
+
+        if (studentID == null) {
+            return "redirect:/students/signin";
+        }
+
+        Student student = studentService.getStudentById(studentID).orElse(null);
+        
+        model.addAttribute("eventsList", eventService.getAllEvents());
+        model.addAttribute("student", student);
+        return "events";
+    }
 
     //Getting all posts
     @GetMapping
@@ -58,24 +80,82 @@ public class StudentUIController {
 
     //Creating a post
     @GetMapping("/posts/create")
-    public String showCreatePostPage(Model model) {
+    public String showCreatePostPage(Model model, HttpSession session) {
+        Long studentID = (Long) session.getAttribute("studentID");
+
+        if (studentID == null) {
+            return "redirect:/students/signin";
+        }
+
+        Student student = studentService.getStudentById(studentID).orElse(null);
+        List<Ban> bans = banService.getBansByStudent(studentID);
+        
+        if (!bans.isEmpty()){
+            model.addAttribute("ban", bans.get(0));
+            model.addAttribute("student", student);
+            return "student-ban";
+        }
+        
         model.addAttribute("post", new Post());
+        model.addAttribute("student", student);
         return "create-post";
     }
 
+     @GetMapping("/posts/important")
+    public String getCommentsByImportant(Model model, HttpSession session){
+        Long studentID = (Long) session.getAttribute("studentID");
+
+        if (studentID == null) {
+            return "redirect:/students/signin";
+        }
+
+        Student student = studentService.getStudentById(studentID).orElse(null);
+
+        model.addAttribute("student", student);
+        model.addAttribute("importantList", postService.getEmergencyTag());
+        return "comments-important-list";
+    }
+
     //Getting all posts from a certain residence hall
-    @GetMapping("posts/{residenceHall}")
-    public String getCommentsByHall(Model model, @PathVariable String residenceHall){
+    @GetMapping("/posts/{residenceHall}")
+    public String getCommentsByHall(Model model, @PathVariable String residenceHall, HttpSession session){
+        Long studentID = (Long) session.getAttribute("studentID");
+
+        if (studentID == null) {
+            return "redirect:/students/signin";
+        }
+
+        Student student = studentService.getStudentById(studentID).orElse(null);
+
+        model.addAttribute("student", student);
         model.addAttribute("commentsHallList", postService.getPostsByHall(residenceHall));
         return "comments-hall-list";
 
     }
 
+   
+
     //Creating a reply to a post
     @GetMapping("/replies/create/{postID}")
-    public String showCreateReplyPage(Model model, @PathVariable Long postID) {
+    public String showCreateReplyPage(Model model, @PathVariable Long postID, HttpSession session) {
         Post post = postService.getPostById(postID).orElse(null);
 
+        Long studentID = (Long) session.getAttribute("studentID");
+
+        if (studentID == null) {
+            return "redirect:/students/signin";
+        }
+
+        Student student = studentService.getStudentById(studentID).orElse(null);
+        List<Ban> bans = banService.getBansByStudent(studentID);
+
+        if (!bans.isEmpty()){
+            model.addAttribute("ban", bans.get(0));
+            model.addAttribute("student", student);
+            return "student-ban";
+        }
+
+        model.addAttribute("student", student);
         model.addAttribute("reply", new Reply());
         model.addAttribute("post", post);
         return "create-reply";
@@ -137,7 +217,7 @@ public class StudentUIController {
     }
   }
 
-    //Rendering the signin page
+    //Rendering the sign-in page
     @GetMapping("/signin")
     public String showSigninPage() {
         return "signin"; 
@@ -145,21 +225,24 @@ public class StudentUIController {
 
     //Trying to get a student by their username and password.
     @PostMapping("/signin")
-    public String signin(@RequestParam String email, @RequestParam String password, HttpSession session) {
+    public String signin(@RequestParam String email, @RequestParam String password, HttpSession session, Model model) {
         try {
         Student student = studentService.authenticate(email, password);
         session.setAttribute("studentID", student.getUserId());
         return "redirect:/students";
         } catch (Exception e) {
-        return "redirect:/signin?error";
+            model.addAttribute("error", "Invalid email or password.");
+            return "signin";
         }
     }
 
+    //Rendering the sign-up page
     @GetMapping("/signup")
     public String showSignupPage(){
         return "signup";
     }
 
+    //Posting the newly created student
     @PostMapping("/signup")
     public String createNewStudent(Student student){
         studentService.createStudent(student);
@@ -177,6 +260,14 @@ public class StudentUIController {
         return "student-events";
     }
 
+    //Signing out of the current HTTP session
+    @GetMapping("/auth/signout")
+    public String signout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/students/signin";
+    }
+
+    //Get mapping for updating the current user
     @GetMapping("/update/{id}")
     public String showProfilePage(@PathVariable Long id, Model model, HttpSession session){
             Long studentID = (Long) session.getAttribute("studentID");
@@ -192,6 +283,7 @@ public class StudentUIController {
     }
 
 
+    //Post mapping for updating the current user
     @PostMapping("/update/{id}")
     public String updateStudent(@PathVariable Long id, Student updatedStudent) {
         Student student = studentService.updateStudent(id, updatedStudent);
@@ -201,6 +293,15 @@ public class StudentUIController {
         } else {
         return "redirect:/students/" + id + "?error=true";
         }
+    }
+
+    @PostMapping("/delete")
+    public String deleteStudent(HttpSession session){
+        Long studentID = (Long) session.getAttribute("studentID");
+        studentService.deleteStudent(studentID);
+        session.invalidate();
+
+        return "redirect:/students/signin";
     }
 
 }

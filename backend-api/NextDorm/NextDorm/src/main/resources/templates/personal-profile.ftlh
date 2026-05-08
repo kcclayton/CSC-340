@@ -20,7 +20,7 @@
 
             <!-- HEADER LOGO -->
 
-            <a class="navbar-brand" href="../Provider/index.html">
+            <a class="navbar-brand" href="/students">
                 <img src="/images/nextdorm-logo-alt3.png" alt="Logo" width="155" height="55"
                     class="d-inline-block align-text-top">
             </a>
@@ -44,7 +44,7 @@
 
                 </form>
 
-                    <a class="navbar-icon" id="profile-icon" href="profile.html">
+                    <a class="navbar-icon ms-auto" id="profile-icon" href="/students/update/${student.userId}">
                         <img src="/images/nextdorm-icon-profile.png" alt="Logo" width="60" height="60"
                             class="d-inline-block align-text-top">
                     </a>
@@ -67,17 +67,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="/students">Home</a>
             </li>
-
-            <!-- ANNOUNCEMENTS BUTTON -->
-
-            <li class="nav-item">
-                <a class="nav-link" href="../Provider/announcements.html">Announcements</a>
-            </li>
-
             <!-- EVENTS BUTTON -->
 
             <li class="nav-item">
-                <a class="nav-link" href="../Provider/events.html">Events</a>
+                <a class="nav-link" href="/students/events">Events</a>
+            </li>
+
+           <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signoutModal">Sign Out</a>
             </li>
 
     </div>
@@ -92,17 +89,53 @@
             <p>${student.description}</p>
 
 
-            <form id="edit-character" action="/students/update/${student.userId}" method="post">
-                <input type="text" id="userId" name="userId" value="${student.userId}" readonly />
-                <input type="text" id="name" name="name" value="${student.name}" placeholder="Name" />
-                <input type="text" id="username" name="username" value="${student.username}" placeholder="Username" />
-                <input type="text" id="residenceHall" name="residenceHall" value="${student.residenceHall}" placeholder="Residence Hall" />
-                <input type="text" id="description" name="description" value="${student.description}" placeholder="Short description" />
+            <form id="edit-profile" action="/students/update/${student.userId}" method="post">
+                <label class="form-label">ID #</label>
+                <input type="text" class="form-control" id="userId" name="userId" value="${student.userId}" readonly />
+
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="${student.name}" placeholder="Name" />
+
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" value="${student.username}" placeholder="Username" />
+
+                <label class="form-label">Residence Hall</label>
+                <input type="text" class="form-control" id="residenceHall" name="residenceHall" value="${student.residenceHall}" placeholder="Residence Hall" />
+                
+                <label class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" name="description" value="${student.description}" placeholder="Short description" />
+                <br>
+                
                 <button id = "submit" type="submit" class="btn btn-success">Save</button>
+            </form>
+
+                <form action="/students/delete" method="post">
+                    <button type="submit" class="btn btn-danger"
+                        onclick="return confirm('Permanently delete your account? This cannot be undone.')">
+                        Delete My Account
+                    </button>
                 </form>
+
         </div>
     </div>
    
+     <!-- Sign Out Confirmation Modal -->
+    <div class="modal fade" id="signoutModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sign Out</h5>
+                </div>
+                <div class="modal-body">
+                    This will direct you back to the login page. Are you sure?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Go Back</button>
+                    <a href="/students/auth/signout" class="btn btn-outline-custom">I'm Sure</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 

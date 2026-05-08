@@ -20,7 +20,7 @@
 
             <!-- HEADER LOGO -->
 
-            <a class="navbar-brand" href="../Provider/index.html">
+            <a class="navbar-brand" href="/students">
                 <img src="/images/nextdorm-logo-alt3.png" alt="Logo" width="155" height="55"
                     class="d-inline-block align-text-top">
             </a>
@@ -54,62 +54,19 @@
         </div>
 
     </nav>
-    <!-- LEFT NAV OPTIONS -->
-
-    <div class="nav-column">
-
-        <!-- MAIN NAV BUTTONS -->
-
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-            <!-- HOME BUTTON -->
-
-            <li class="nav-item">
-                <a class="nav-link" href="/students">Home</a>
-            </li>
-
-            <!-- EVENTS BUTTON -->
-
-            <li class="nav-item">
-                <a class="nav-link" href="/students/events">Events</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signoutModal">Sign Out</a>
-            </li>
-
-    </div>
 
     <!--Profile section-->
      <div class="card-wrapper">
         <div class="card">
-            <h1>${student.name}</h1>
-            <h5>@${student.username} | ${student.residenceHall}</h5>
-            
-      
-            <p>${student.description}</p>
-
+            <p>You currently cannot post for the following reason: ${ban.description} <br>
+            You may post again in ${ban.banLength} days.
+            </p>
+            <a href="/students" class="btn btn-primary">Back to post feed</a>
         </div>
     </div>
 
 
-     <!-- Sign Out Confirmation Modal -->
-    <div class="modal fade" id="signoutModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Sign Out</h5>
-                </div>
-                <div class="modal-body">
-                    This will direct you back to the login page. Are you sure?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Go Back</button>
-                    <a href="/students/auth/signout" class="btn btn-outline-custom">I'm Sure</a>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     
 </body>

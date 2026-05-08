@@ -153,18 +153,7 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Then  I can see a full list of all current RAs with their usernames and residence assignments
   ```
 
-- **US‑PROV‑006 — Search RAs by Residence**  
-  _Story:_ As an RA, I want to filter the RA directory by residence so I can quickly find RAs assigned to a specific building.\
-  _Acceptance:_
-  > Must be logged in as an RA
-  ```gherkin
-  Scenario: Searching RAs by residence
-    Given I am on the Directory page
-    When  I enter a residence name in the search bar and submit
-    Then  the list updates to show only RAs assigned to that residence
-  ```
-
-- **US‑PROV‑007 — View Specific RA Profile**  
+- **US‑PROV‑006 — View Specific RA Profile**  
   _Story:_ As an RA, I want to view another RA's profile so I can learn more about them.\
   _Acceptance:_
   > Must be logged in as an RA
@@ -175,7 +164,7 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Then  I am taken to that RA's profile page showing their details
   ```
 
-- **US‑PROV‑008 — Create Event**  
+- **US‑PROV‑007 — Create Event**  
   _Story:_ As an RA, I want to create event posts so that I can inform residents of upcoming activities.\
   _Acceptance:_
   > Must be logged in as an RA
@@ -186,7 +175,7 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Then  I can fill in the event details and submit to publish the event
   ```
 
-- **US‑PROV‑009 — Update Existing Event**  
+- **US‑PROV‑008 — Update Existing Event**  
   _Story:_ As an RA, I want to edit an event I created so that I can correct or update its details.\
   _Acceptance:_
   > Must be logged in as an RA
@@ -197,7 +186,7 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Then  the event is updated and I am returned to the Events page
   ```
 
-- **US‑PROV‑010 — Delete Event**  
+- **US‑PROV‑009 — Delete Event**  
   _Story:_ As an RA, I want to delete an event I created so that I can remove outdated or cancelled events.\
   _Acceptance:_
   > Must be logged in as an RA
@@ -208,7 +197,7 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Then  the event is permanently removed and the Events page refreshes
   ```
 
-- **US‑PROV‑011 — View All Events**  
+- **US‑PROV‑010 — View All Events**  
   _Story:_ As an RA, I want to see all posted events so that I stay informed about what is happening across residences.\
   _Acceptance:_
   > Must be logged in as an RA
@@ -219,7 +208,7 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Then  I can see a list of all events posted by all RAs
   ```
 
-- **US‑PROV‑012 — View My Events**  
+- **US‑PROV‑011 — View My Events**  
   _Story:_ As an RA, I want to filter events to only those I created so that I can manage my own posts easily.\
   _Acceptance:_
   > Must be logged in as an RA
@@ -230,7 +219,7 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Then  the list updates to show only events I have created
   ```
 
-- **US‑PROV‑013 — Issue a Ban**  
+- **US‑PROV‑012 — Issue a Ban**  
   _Story:_ As an RA, I want to issue a ban to a student so that I can enforce community guidelines.\
   _Acceptance:_
   > Must be logged in as an RA
@@ -241,7 +230,7 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Then  I can enter the student ID, reason, and ban length and submit to record the ban
   ```
 
-- **US‑PROV‑014 — Update Existing Ban**  
+- **US‑PROV‑013 — Update Existing Ban**  
   _Story:_ As an RA, I want to edit an existing ban so that I can correct its details if needed.\
   _Acceptance:_
   > Must be logged in as an RA
@@ -252,7 +241,7 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Then  the ban record is updated and I am returned to the Bans page
   ```
 
-- **US‑PROV‑015 — Delete a Ban**  
+- **US‑PROV‑014 — Delete a Ban**  
   _Story:_ As an RA, I want to delete a ban record so that I can remove bans that were issued in error or have expired.\
   _Acceptance:_
   > Must be logged in as an RA
@@ -263,7 +252,7 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Then  the ban record is permanently removed and the Bans page refreshes
   ```
 
-- **US‑PROV‑016 — View All Bans**  
+- **US‑PROV‑015 — View All Bans**  
   _Story:_ As an RA, I want to see all issued bans so that I have a complete record of disciplinary actions.\
   _Acceptance:_
   > Must be logged in as an RA

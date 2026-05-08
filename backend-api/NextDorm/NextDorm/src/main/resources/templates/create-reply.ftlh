@@ -21,7 +21,7 @@
 
             <!-- HEADER LOGO -->
 
-            <a class="navbar-brand" href="../Provider/index.html">
+            <a class="navbar-brand" href="/students">
                 <img src="/images/nextdorm-logo-alt3.png" alt="Logo" width="155" height="55"
                     class="d-inline-block align-text-top">
             </a>
@@ -45,7 +45,7 @@
 
                 </form>
 
-                    <a class="navbar-icon" id="profile-icon" href="profile.html">
+                    <a class="navbar-icon ms-auto" id="profile-icon" href="/students/update/${student.userId}">
                         <img src="/images/nextdorm-icon-profile.png" alt="Logo" width="60" height="60"
                             class="d-inline-block align-text-top">
                     </a>
@@ -68,17 +68,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="/students">Home</a>
             </li>
-
-            <!-- ANNOUNCEMENTS BUTTON -->
-
-            <li class="nav-item">
-                <a class="nav-link" href="../Provider/announcements.html">Announcements</a>
-            </li>
-
             <!-- EVENTS BUTTON -->
 
             <li class="nav-item">
-                <a class="nav-link" href="../Provider/events.html">Events</a>
+                <a class="nav-link" href="/students/events">Events</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signoutModal">Sign Out</a>
             </li>
 
     </div>
@@ -108,7 +105,23 @@
 
 
                     
-                 
+     <!-- Sign Out Confirmation Modal -->
+    <div class="modal fade" id="signoutModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sign Out</h5>
+                </div>
+                <div class="modal-body">
+                    This will direct you back to the login page. Are you sure?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Go Back</button>
+                    <a href="/students/auth/signout" class="btn btn-outline-custom">I'm Sure</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 

@@ -121,13 +121,13 @@
                     <!-- ANNOUNCEMENTS BUTTON -->
 
                     <li class="feed-btn">
-                        <a class="nav-link" href="#"><b>Your Building</b></a>
+                        <a class="nav-link" href="#">Your Building</a>
                     </li>
 
                     <!-- EVENTS BUTTON -->
 
                     <li class="feed-btn">
-                         <a class="nav-link" href="/students/posts/important">Important</a>
+                         <a class="nav-link" href="/students/posts/important"><b>Important</b></a>
                     </li>
 
                     <li class="feed-btn" id="create-post">
@@ -142,7 +142,7 @@
 
                 <!-- POSTS -->
 
-                <#list commentsHallList?reverse as post>
+                <#list importantList?reverse as post>
                  <#if post.student??>
                     <div class="card post mx-4 my-2">
 
