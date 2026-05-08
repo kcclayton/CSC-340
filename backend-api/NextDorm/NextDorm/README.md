@@ -106,26 +106,21 @@ Core domains:
   "userPassword": "securePassword123!",
   "name": "Johnny Dough",
   "username": "johnny.dough",
-  "role": "STUDENT",
-  "residenceHall": "Guilford",
-  "description": "I love living on campus!",
-  "status": "ACTIVE"
+  "residenceDescription": "North Hall"
 }
 ```
  
 **Example response:**
 ```json
 {
-	"residenceHall": "Guilford",
-	"description": "I love living on campus!",
-	"status": "ACTIVE",
-	"posts": null,
-	"replies": null,
-	"email": "johnny.dough@example.com",
-	"name": "Johnny Dough",
-	"role": "STUDENT",
-	"userId": 11,
-	"username": "johnny.dough"
+  "userId": 11,
+  "email": "johnny.dough@example.com",
+  "name": "Johnny Dough",
+  "username": "johnny.dough",
+  "role": "RA",
+  "residenceDescription": "North Hall",
+  "bans": [],
+  "event": []
 }
 ```
 
@@ -254,7 +249,7 @@ Core domains:
 **Example response:**
 ```json
 {
-  "eventPostId": 1,
+  "eventId": 1,
   "organizationName": "North Hall RAs",
   "eventDate": "2026-04-01",
   "location": "North Hall Front Lawn",
@@ -305,14 +300,25 @@ Core domains:
 | Use Case | ID | Endpoint(s) |
 |----------|----|-------------|
 | Create RA Profile | US-PROV-001 | `POST /ras` |
-| Login as RA | US-PROV-002 | `GET /ras/{id}` |
-| Create Post / Announcement | US-PROV-003 | `POST /eventposts` |
-| Announce Globally | US-PROV-004 | `POST /eventposts`, `GET /eventposts` |
-| Block Users from Posting | US-PROV-005 | `POST /bans`, `DELETE /bans/{id}` |
+| Login as RA | US-PROV-002 | `POST /ras/signin` |
+| Update RA Profile | US-PROV-003 | `PUT /ras/{id}` |
+| Delete RA Profile | US-PROV-004 | `DELETE /ras/{id}` |
+| View List of All RAs | US-PROV-005 | `GET /ras` |
+| Search RAs by Residence | US-PROV-006 | `GET /ras/residence/search` |
+| View Specific RA Profile | US-PROV-007 | `GET /ras/{id}` |
+| Create Event | US-PROV-008 | `POST /eventposts` |
+| Update Existing Event | US-PROV-009 | `PUT /eventposts/{id}` |
+| Delete Event | US-PROV-010 | `DELETE /eventposts/{id}` |
+| View All Events | US-PROV-011 | `GET /eventposts` |
+| View My Events | US-PROV-012 | `GET /eventposts/ra/{raId}` |
+| Issue a Ban | US-PROV-013 | `POST /bans` |
+| Update Existing Ban | US-PROV-014 | `PUT /bans/{id}` |
+| Delete a Ban | US-PROV-015 | `DELETE /bans/{id}` |
+| View All Bans | US-PROV-016 | `GET /bans` |
 
 | Use Case | ID | Endpoint(s) |
 |----------|----|-------------|
 | Create Student Profile | US-CUST-001 | `POST /students` |
-| Login as Student | US-CUST-002       | `GET /students/{id}` |
-| Create Post | US-CUST-003            | `POST /posts` |
-| Reply to Posts | US-CUST-004         | `POST /replies` | 
+| Login as Student | US-CUST-002 | `GET /students/{id}` |
+| Create Post | US-CUST-003 | `POST /posts` |
+| Reply to Posts | US-CUST-004 | `POST /replies` |

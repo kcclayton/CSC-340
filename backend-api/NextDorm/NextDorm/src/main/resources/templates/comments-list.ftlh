@@ -90,10 +90,13 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="/students/events">Events</a>
+<<<<<<< HEAD
+=======
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signoutModal">Sign Out</a>
+>>>>>>> 0237c55d8d4603c318001a817354ce534666a65e
             </li>
 
     </div>

@@ -22,25 +22,12 @@
     5. Comment on posts - Students can comment and reply on selected posts.
     7. View profiles of other users - Residents can click on and view the profiles of other residents/RAs/students.
 
-2. Provider (mainly residents and RAs):
-    1. Create announcements + posts that notify recipients - Create a post. If recipients are subscribed to that individual, page, or post, they are notified when it is posted/updated.
-    2. Tag posts for relevant communities - Use the tag system to mark posts accurately (like stated above, for emergencies, events, etc.)
-    3. Respond to comments on posts - Reply to comments left by customers (residents).
-    4. Verify information and report innacuracies to SysAdmin - Ability to set up a report that is sent to the SysAdmin team, such as someone providing inaccurate or harmful information.
-    5. Send direct messages to users - Can communicate with other users through a direct messaging system, which is accessed through a users profile.
-    6. Create pins on campus map (connected to posts) - Mark locations on a map of the users campus that accompany post information. 
-
-3. SysAdmin (RA supervisors, etc.):
-    1. Freeze select accounts from posting for an amount of time - Issue temp/permanent bans based on content.
-    2. Delete inaccurate information or inappropriate content - Issue warnings and delete harmful/misleading content.
-    3. View usage statistics - See number of students using the application and number of posts.
-
-### Installation Instructions
-1. Navigate to the backend-api folder.
-2. Navigate through the src folder to the main folder.
-3. From the main folder, select the resources folder.
-4. Within the resources folder, select application.properties.
-5. Put in your own unique database information.
-6. Navigate back out to the java folder.
-7. Within this folder, select Application.Java.
-8. Run the program. The easiest endpoint to access will be http://localhost:8080/students. From here, you can either create/log in to a student profile OR navigate to the RA login/signup section.
+2. Provider (RAs):
+    1. Create/modify/delete RA profile - Register as an RA with a residence assignment and manage your account details.
+    2. Create event posts - Post events with a title, date, location, and description for residents to see.
+    3. Edit and delete event posts - Update or remove events you have created.
+    4. View all events / filter by RA - Browse all event posts across residences, or filter to see only your own.
+    5. Issue bans - Record a ban against a student by specifying their ID, a reason, and a ban length in days.
+    6. Edit and delete bans - Update or remove existing ban records.
+    7. View all bans - See a full list of all bans issued across all RAs.
+    8. View RA directory - Browse all RAs on the platform, search by residence, and view individual RA profiles.
